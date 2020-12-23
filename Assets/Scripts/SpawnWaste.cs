@@ -22,7 +22,7 @@ public class SpawnWaste : MonoBehaviour
         count = 0;
 
         // The amount how many objects should be created
-        amount = Random.Range(0, 10);
+        amount = Random.Range(5, 10);
 
         // Initiate List
         wasteList = new List<Transform>();
