@@ -5,13 +5,14 @@ using UnityEngine;
 public class SpawnWaste : MonoBehaviour
 {
     [SerializeField]
-    private Transform myWaste;
+    private Transform plasticWaste, paperWaste,
+    organicWaste, hazardousWaste, glassWaste;
     [SerializeField]
     private Transform player;
     [SerializeField]
     private LayerMask triggerLayer;
 
-    private int count, amount;
+    private int count, amount, whatToSpawn;
     private List<Transform> wasteList;
 
     // Start is called before the first frame update
@@ -39,9 +40,27 @@ public class SpawnWaste : MonoBehaviour
             {
                 // Set the vector 3 position
                 Vector2 spawnPos = new Vector2(spawnPosX, spawnPosY);
+                whatToSpawn = Random.Range(1, 6);
 
-                // Instantiate copies of Prefab each and save to list
-                wasteList.Add(Instantiate(myWaste, spawnPos, Quaternion.identity));
+                // Instantiate copies of random Prefab and add to list
+                switch (whatToSpawn)
+                {
+                    case 1:
+                        wasteList.Add(Instantiate(plasticWaste, spawnPos, Quaternion.identity));
+                        break;
+                    case 2:
+                        wasteList.Add(Instantiate(paperWaste, spawnPos, Quaternion.identity));
+                        break;
+                    case 3:
+                        wasteList.Add(Instantiate(organicWaste, spawnPos, Quaternion.identity));
+                        break;
+                    case 4:
+                        wasteList.Add(Instantiate(hazardousWaste, spawnPos, Quaternion.identity));
+                        break;
+                    case 5:
+                        wasteList.Add(Instantiate(glassWaste, spawnPos, Quaternion.identity));
+                        break;
+                }
                 count++;
             }
         }
