@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public int speed = 10;
-    private int cnt = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    [SerializeField]
+    private int speed = 10;
 
     // Update is called once per frame
     void Update()
