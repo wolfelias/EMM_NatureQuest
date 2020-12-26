@@ -18,19 +18,13 @@ public class SpawnWasteBins : MonoBehaviour
         SpawnBins();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void SpawnBins()
     {
-        binList.Add(Instantiate(plasticBin, new Vector2(22, 0), Quaternion.identity));
-        binList.Add(Instantiate(paperBin, new Vector2(26, 0), Quaternion.identity));
-        binList.Add(Instantiate(organicBin, new Vector2(30, 0), Quaternion.identity));
-        binList.Add(Instantiate(hazardousBin, new Vector2(34, 0), Quaternion.identity));
-        binList.Add(Instantiate(glassBin, new Vector2(38, 0), Quaternion.identity));
+        binList.Add(Instantiate(plasticBin, new Vector2(22, 24), Quaternion.identity));
+        binList.Add(Instantiate(paperBin, new Vector2(26, 24), Quaternion.identity));
+        binList.Add(Instantiate(organicBin, new Vector2(30, 24), Quaternion.identity));
+        binList.Add(Instantiate(hazardousBin, new Vector2(34, 24), Quaternion.identity));
+        binList.Add(Instantiate(glassBin, new Vector2(38, 24), Quaternion.identity));
     }
 
     private void ClearBin()

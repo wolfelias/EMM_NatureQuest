@@ -1,0 +1,69 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CollectController : MonoBehaviour
+{
+    public Rigidbody2D rigidbody;
+    public BoxCollider2D collider;
+    public Transform player, wasteContainer, mainCamera;
+
+    public float pickUpRange;
+    public bool equipped;
+    public static bool slotFull;
+
+    private void Start()
+    {
+        // Setup
+        if (!equipped)
+        {
+            rigidbody.isKinematic = false;
+            collider.isTrigger = false;
+        }
+        else
+        {
+            rigidbody.isKinematic = true;
+            collider.isTrigger = true;
+            slotFull = true;
+        }
+    }
+
+    private void Update()
+    {
+        // Check if player is in range and "E" is pressed
+        Vector2 distanceToPlayer = player.position - transform.position;
+        if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull) PickUp();
+
+        // Drop if equipped and "Q" is pressed
+        if (equipped && Input.GetKeyDown(KeyCode.Q)) Drop();
+    }
+
+    private void PickUp()
+    {
+        equipped = true;
+        slotFull = true;
+
+        // Make waste a child of the camera and move it to default position
+        transform.SetParent(wasteContainer);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.Euler(Vector3.zero);
+        transform.localScale = Vector3.one;
+
+        // Make Rigidbody kinematic and BoxCollider a trigger
+        rigidbody.isKinematic = true;
+        collider.isTrigger = true;
+    }
+
+    private void Drop()
+    {
+        equipped = false;
+        slotFull = false;
+
+        // Set parent to null
+        transform.SetParent(null);
+
+        // Make Rigidbody not kinematic and BoxCollider normal
+        rigidbody.isKinematic = false;
+        collider.isTrigger = false;
+    }
+}
