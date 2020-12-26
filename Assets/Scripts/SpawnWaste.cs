@@ -35,7 +35,7 @@ public class SpawnWaste : MonoBehaviour
         {
             // Set a random spawn position
             float spawnPosX = Random.Range(15.0f, 45.0f);
-            float spawnPosY = Random.Range(-25.0f, 25.0f);
+            float spawnPosY = Random.Range(-20.0f, 20.0f);
             if (count != amount)
             {
                 // Set the vector 3 position
