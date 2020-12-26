@@ -6,11 +6,15 @@ public class CollectController : MonoBehaviour
 {
     public Rigidbody2D rigidbody;
     public BoxCollider2D collider;
-    public Transform player, wasteContainer, mainCamera;
+    public Transform player, wasteContainer;
 
     public float pickUpRange;
     public bool equipped;
     public static bool slotFull;
+
+    public float dropRange;
+    public Transform plasticBin, paperBin, organicBin,
+    hazardousBin, glassBin;
 
     private void Start()
     {
@@ -56,6 +60,33 @@ public class CollectController : MonoBehaviour
 
     private void Drop()
     {
+        Vector2 distanceToPlasticBin = plasticBin.position - transform.position;
+        Vector2 distanceToPaperBin = paperBin.position - transform.position;
+        Vector2 distanceToOrganicBin = organicBin.position - transform.position;
+        Vector2 distanceToHazardousBin = hazardousBin.position - transform.position;
+        Vector2 distanceToGlassBin = glassBin.position - transform.position; 
+        // If waste dropped at the position of the garbage can,
+        // destroy the object, if not drop on the ground
+        if (distanceToPlasticBin.magnitude <= dropRange)
+        {
+            Destroy(gameObject);
+        }
+        else if (distanceToPaperBin.magnitude <= dropRange)
+        {
+            Destroy(gameObject);
+        }
+        else if (distanceToOrganicBin.magnitude <= dropRange)
+        {
+            Destroy(gameObject);
+        }
+        else if (distanceToHazardousBin.magnitude <= dropRange)
+        {
+            Destroy(gameObject);
+        }
+        else if (distanceToGlassBin.magnitude <= dropRange)
+        {
+            Destroy(gameObject);
+        }
         equipped = false;
         slotFull = false;
 
