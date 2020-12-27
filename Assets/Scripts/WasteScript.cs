@@ -16,8 +16,13 @@ public class WasteScript : MonoBehaviour
     public Transform plasticBin, paperBin, organicBin,
     hazardousBin, glassBin;
 
+    private Health playerHealth;
+
     private void Start()
     {
+        // Get the health of the player
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+
         // Setup
         if (!equipped)
         {
@@ -79,22 +84,62 @@ public class WasteScript : MonoBehaviour
         if (distanceToPlasticBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
+            if (tag == "PlasticWaste")
+            {
+                playerHealth.IncreaseHealth(5);
+            }
+            else
+            {
+                playerHealth.DecreaseHealth(5);
+            }
         }
         else if (distanceToPaperBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
+            if (tag == "PaperWaste")
+            {
+                playerHealth.IncreaseHealth(5);
+            }
+            else
+            {
+                playerHealth.DecreaseHealth(5);
+            }
         }
         else if (distanceToOrganicBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
+            if (tag == "OrganicWaste")
+            {
+                playerHealth.IncreaseHealth(5);
+            }
+            else
+            {
+                playerHealth.DecreaseHealth(5);
+            }
         }
         else if (distanceToHazardousBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
+            if (tag == "HazardousWaste")
+            {
+                playerHealth.IncreaseHealth(5);
+            }
+            else
+            {
+                playerHealth.DecreaseHealth(5);
+            }
         }
         else if (distanceToGlassBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
+            if (tag == "GlassWaste")
+            {
+                playerHealth.IncreaseHealth(5);
+            }
+            else
+            {
+                playerHealth.DecreaseHealth(5);
+            }
         }
 
         equipped = false;
