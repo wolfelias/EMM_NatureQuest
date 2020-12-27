@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectController : MonoBehaviour
+public class WasteScript : MonoBehaviour
 {
     public Rigidbody2D rigidbody;
     public BoxCollider2D collider;
@@ -56,6 +56,14 @@ public class CollectController : MonoBehaviour
         // Make Rigidbody kinematic and BoxCollider a trigger
         rigidbody.isKinematic = true;
         collider.isTrigger = true;
+
+        // Unequipped object if player leaves the trigger area
+        // if (gameObject == null)
+        // {
+        //     Debug.Log("Waste destroyed");
+        //     equipped = false;
+        //     slotFull = false;
+        // }
     }
 
     private void Drop()
@@ -64,8 +72,9 @@ public class CollectController : MonoBehaviour
         Vector2 distanceToPaperBin = paperBin.position - transform.position;
         Vector2 distanceToOrganicBin = organicBin.position - transform.position;
         Vector2 distanceToHazardousBin = hazardousBin.position - transform.position;
-        Vector2 distanceToGlassBin = glassBin.position - transform.position; 
-        // If waste dropped at the position of the garbage can,
+        Vector2 distanceToGlassBin = glassBin.position - transform.position;
+
+        // If waste dropped near the position of the garbage can,
         // destroy the object, if not drop on the ground
         if (distanceToPlasticBin.magnitude <= dropRange)
         {
@@ -87,6 +96,7 @@ public class CollectController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         equipped = false;
         slotFull = false;
 

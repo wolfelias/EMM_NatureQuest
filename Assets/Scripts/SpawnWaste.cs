@@ -76,7 +76,10 @@ public class SpawnWaste : MonoBehaviour
         {
             for (int i = 0; i < wasteList.Count; i++)
             {
-                Destroy(wasteList[i].gameObject);
+                if (wasteList[i] != null)
+                {
+                    Destroy(wasteList[i].gameObject);
+                }
             }
             wasteList.Clear();
 
