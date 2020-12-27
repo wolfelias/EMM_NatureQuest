@@ -84,7 +84,7 @@ public class WasteScript : MonoBehaviour
         if (distanceToPlasticBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (tag == "PlasticWaste")
+            if (CompareTag("PlasticWaste"))
             {
                 playerHealth.IncreaseHealth(5);
             }
@@ -96,7 +96,7 @@ public class WasteScript : MonoBehaviour
         else if (distanceToPaperBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (tag == "PaperWaste")
+            if (CompareTag("PaperWaste"))
             {
                 playerHealth.IncreaseHealth(5);
             }
@@ -108,7 +108,7 @@ public class WasteScript : MonoBehaviour
         else if (distanceToOrganicBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (tag == "OrganicWaste")
+            if (CompareTag("OrganicWaste"))
             {
                 playerHealth.IncreaseHealth(5);
             }
@@ -120,7 +120,7 @@ public class WasteScript : MonoBehaviour
         else if (distanceToHazardousBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (tag == "HazardousWaste")
+            if (CompareTag("HazardousWaste"))
             {
                 playerHealth.IncreaseHealth(5);
             }
@@ -132,7 +132,7 @@ public class WasteScript : MonoBehaviour
         else if (distanceToGlassBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (tag == "GlassWaste")
+            if (CompareTag("GlassWaste"))
             {
                 playerHealth.IncreaseHealth(5);
             }
