@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PlasticWaste
-  - PaperWaste
+  - Paper
   - OrganicWaste
-  - HazardousWaste
+  - HouseholdWaste
   - GlassWaste
+  - RecyclableMaterial
   layers:
   - Default
   - TransparentFX

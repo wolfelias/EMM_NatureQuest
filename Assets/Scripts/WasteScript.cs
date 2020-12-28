@@ -6,20 +6,28 @@ public class WasteScript : MonoBehaviour
 {
     public Rigidbody2D rigidbody;
     public BoxCollider2D collider;
-    public Transform player, wasteContainer;
+    private Transform player, wasteContainer;
 
     public float pickUpRange;
     public bool equipped;
     public static bool slotFull;
 
     public float dropRange;
-    public Transform plasticBin, paperBin, organicBin,
-    hazardousBin, glassBin;
+    private Transform recycleBin, paperBin, organicBin,
+    householdBin, glassBin;
 
     private Health playerHealth;
 
     private void Start()
     {
+        player = GameObject.Find("Player").transform;
+        wasteContainer = GameObject.Find("WasteContainer").transform;
+        recycleBin = GameObject.Find("RecycleBin").transform;
+        paperBin = GameObject.Find("PaperBin").transform;
+        organicBin = GameObject.Find("OrganicBin").transform;
+        householdBin = GameObject.Find("HouseholdBin").transform;
+        glassBin = GameObject.Find("GlassBin").transform;
+
         // Get the health of the player
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
 
@@ -73,18 +81,18 @@ public class WasteScript : MonoBehaviour
 
     private void Drop()
     {
-        Vector2 distanceToPlasticBin = plasticBin.position - transform.position;
+        Vector2 distanceToRecycleBin = recycleBin.position - transform.position;
         Vector2 distanceToPaperBin = paperBin.position - transform.position;
         Vector2 distanceToOrganicBin = organicBin.position - transform.position;
-        Vector2 distanceToHazardousBin = hazardousBin.position - transform.position;
+        Vector2 distanceToHouseholdBin = householdBin.position - transform.position;
         Vector2 distanceToGlassBin = glassBin.position - transform.position;
 
         // If waste dropped near the position of the garbage can,
         // destroy the object, if not drop on the ground
-        if (distanceToPlasticBin.magnitude <= dropRange)
+        if (distanceToRecycleBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("PlasticWaste"))
+            if (CompareTag("RecyclableMaterial"))
             {
                 playerHealth.IncreaseHealth(5);
             }
@@ -96,7 +104,7 @@ public class WasteScript : MonoBehaviour
         else if (distanceToPaperBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("PaperWaste"))
+            if (CompareTag("Paper"))
             {
                 playerHealth.IncreaseHealth(5);
             }
@@ -117,10 +125,10 @@ public class WasteScript : MonoBehaviour
                 playerHealth.DecreaseHealth(5);
             }
         }
-        else if (distanceToHazardousBin.magnitude <= dropRange)
+        else if (distanceToHouseholdBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("HazardousWaste"))
+            if (CompareTag("HouseholdWaste"))
             {
                 playerHealth.IncreaseHealth(5);
             }
