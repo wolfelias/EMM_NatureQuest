@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Paper
+  - OrganicWaste
+  - HouseholdWaste
+  - GlassWaste
+  - RecyclableMaterial
   layers:
   - Default
   - TransparentFX
@@ -13,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - SolidObjects
+  - Trigger
   - 
   - 
   - 
@@ -38,6 +43,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4067044831
+    locked: 0
+  - name: Foreground
+    uniqueID: 2346913557
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
