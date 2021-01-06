@@ -64,7 +64,7 @@ public class WasteScript : MonoBehaviour
         transform.SetParent(wasteContainer);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
-        transform.localScale = Vector3.one;
+        // transform.localScale = Vector3.one;
 
         // Make Rigidbody kinematic and BoxCollider a trigger
         rigidbody.isKinematic = true;
