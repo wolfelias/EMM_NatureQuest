@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WasteScript : MonoBehaviour
 {
-    public Rigidbody2D rigidbody;
-    public BoxCollider2D collider;
+    public Rigidbody2D rigidBody;
+    public BoxCollider2D boxCollider;
     private Transform player, wasteContainer;
 
     public float pickUpRange;
@@ -30,19 +30,6 @@ public class WasteScript : MonoBehaviour
 
         // Get the health of the player
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-
-        // Setup
-        if (!equipped)
-        {
-            rigidbody.isKinematic = false;
-            collider.isTrigger = false;
-        }
-        else
-        {
-            rigidbody.isKinematic = true;
-            collider.isTrigger = true;
-            slotFull = true;
-        }
     }
 
     private void Update()
@@ -67,16 +54,8 @@ public class WasteScript : MonoBehaviour
         // transform.localScale = Vector3.one;
 
         // Make Rigidbody kinematic and BoxCollider a trigger
-        rigidbody.isKinematic = true;
-        collider.isTrigger = true;
-
-        // Unequipped object if player leaves the trigger area
-        // if (gameObject == null)
-        // {
-        //     Debug.Log("Waste destroyed");
-        //     equipped = false;
-        //     slotFull = false;
-        // }
+        rigidBody.isKinematic = true;
+        boxCollider.isTrigger = true;
     }
 
     private void Drop()
@@ -149,7 +128,11 @@ public class WasteScript : MonoBehaviour
                 playerHealth.DecreaseHealth(5);
             }
         }
+        Detach();
+    }
 
+    public void Detach()
+    {
         equipped = false;
         slotFull = false;
 
@@ -157,7 +140,7 @@ public class WasteScript : MonoBehaviour
         transform.SetParent(null);
 
         // Make Rigidbody not kinematic and BoxCollider normal
-        rigidbody.isKinematic = false;
-        collider.isTrigger = false;
+        rigidBody.isKinematic = false;
+        boxCollider.isTrigger = false;
     }
 }

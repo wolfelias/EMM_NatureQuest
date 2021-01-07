@@ -15,6 +15,7 @@ public class SpawnWaste : MonoBehaviour
 
     private int count, amount, whatToSpawn;
     private List<Transform> wasteList;
+    private WasteScript wasteScript;
 
     // Start is called before the first frame update
     void Start()
@@ -130,6 +131,11 @@ public class SpawnWaste : MonoBehaviour
             {
                 if (wasteList[i] != null)
                 {
+                    wasteScript = wasteList[i].gameObject.GetComponent<WasteScript>();
+                    if(wasteScript.equipped)
+                    {
+                        wasteScript.Detach();
+                    }
                     Destroy(wasteList[i].gameObject);
                 }
             }
