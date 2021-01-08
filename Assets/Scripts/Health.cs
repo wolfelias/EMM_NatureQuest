@@ -39,4 +39,6 @@ public class Health : MonoBehaviour
             healthBar.SetHealth(curHealth);
         }
     }
+
+    public int CurHealth { get { return curHealth; } }
 }
