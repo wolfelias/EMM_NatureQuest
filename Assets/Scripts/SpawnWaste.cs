@@ -15,7 +15,6 @@ public class SpawnWaste : MonoBehaviour
 
     private int count, amount, whatToSpawn;
     private List<Transform> wasteList;
-    private WasteScript wasteScript;
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +39,9 @@ public class SpawnWaste : MonoBehaviour
             float spawnPosY = Random.Range(-20.0f, 20.0f);
             if (count != amount)
             {
-                // Set the vector 3 position
+                // Set the vector 2 position
                 Vector2 spawnPos = new Vector2(spawnPosX, spawnPosY);
-                whatToSpawn = Random.Range(1, 24);
+                whatToSpawn = Random.Range(1, 23);
 
                 // Instantiate copies of random Prefab and add to list
                 switch (whatToSpawn)
@@ -131,11 +130,6 @@ public class SpawnWaste : MonoBehaviour
             {
                 if (wasteList[i] != null)
                 {
-                    wasteScript = wasteList[i].gameObject.GetComponent<WasteScript>();
-                    if(wasteScript.equipped)
-                    {
-                        wasteScript.Detach();
-                    }
                     Destroy(wasteList[i].gameObject);
                 }
             }

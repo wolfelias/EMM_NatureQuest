@@ -51,7 +51,6 @@ public class WasteScript : MonoBehaviour
         transform.SetParent(wasteContainer);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
-        // transform.localScale = Vector3.one;
 
         // Make Rigidbody kinematic and BoxCollider a trigger
         rigidBody.isKinematic = true;
@@ -71,68 +70,34 @@ public class WasteScript : MonoBehaviour
         if (distanceToRecycleBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("RecyclableMaterial"))
-            {
-                playerHealth.IncreaseHealth(5);
-            }
-            else
-            {
-                playerHealth.DecreaseHealth(5);
-            }
+            if (CompareTag("RecyclableMaterial")) playerHealth.IncreaseHealth(5);  
+            else playerHealth.DecreaseHealth(5);
         }
         else if (distanceToPaperBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("Paper"))
-            {
-                playerHealth.IncreaseHealth(5);
-            }
-            else
-            {
-                playerHealth.DecreaseHealth(5);
-            }
+            if (CompareTag("Paper")) playerHealth.IncreaseHealth(5);
+            else playerHealth.DecreaseHealth(5);
         }
         else if (distanceToOrganicBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("OrganicWaste"))
-            {
-                playerHealth.IncreaseHealth(5);
-            }
-            else
-            {
-                playerHealth.DecreaseHealth(5);
-            }
+            if (CompareTag("OrganicWaste")) playerHealth.IncreaseHealth(5);
+            else playerHealth.DecreaseHealth(5);
         }
         else if (distanceToHouseholdBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("HouseholdWaste"))
-            {
-                playerHealth.IncreaseHealth(5);
-            }
-            else
-            {
-                playerHealth.DecreaseHealth(5);
-            }
+            if (CompareTag("HouseholdWaste")) playerHealth.IncreaseHealth(5);
+            else playerHealth.DecreaseHealth(5);
         }
         else if (distanceToGlassBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("GlassWaste"))
-            {
-                playerHealth.IncreaseHealth(5);
-            }
-            else
-            {
-                playerHealth.DecreaseHealth(5);
-            }
+            if (CompareTag("GlassWaste")) playerHealth.IncreaseHealth(5);
+            else playerHealth.DecreaseHealth(5);
         }
-        Detach();
-    }
 
-    public void Detach()
-    {
         equipped = false;
         slotFull = false;
 
@@ -142,5 +107,12 @@ public class WasteScript : MonoBehaviour
         // Make Rigidbody not kinematic and BoxCollider normal
         rigidBody.isKinematic = false;
         boxCollider.isTrigger = false;
+    }
+
+    void OnDestroy()
+    {
+        // Unequipped waste if destroyed
+        equipped = false;
+        slotFull = false;
     }
 }
