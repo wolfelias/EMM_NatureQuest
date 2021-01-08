@@ -17,6 +17,7 @@ public class WasteScript : MonoBehaviour
     householdBin, glassBin;
 
     private Health playerHealth;
+    public SpawnWaste spawnWaste;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class WasteScript : MonoBehaviour
 
         // Get the health of the player
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        spawnWaste = GameObject.Find("Waste Spawner").GetComponent<SpawnWaste>();
     }
 
     private void Update()
@@ -114,5 +116,6 @@ public class WasteScript : MonoBehaviour
         // Unequipped waste if destroyed
         equipped = false;
         slotFull = false;
+        spawnWaste.MinusCount();
     }
 }
