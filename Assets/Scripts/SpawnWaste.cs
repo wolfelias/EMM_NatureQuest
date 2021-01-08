@@ -15,7 +15,8 @@ public class SpawnWaste : MonoBehaviour
 
     private int count, amount, whatToSpawn;
     private List<Transform> wasteList;
-    private WasteScript wasteScript;
+
+    private float spawnPosX, spawnPosY;
 
     // Start is called before the first frame update
     void Start()
@@ -24,25 +25,37 @@ public class SpawnWaste : MonoBehaviour
         count = 0;
 
         // The amount how many objects should be created
-        amount = Random.Range(5, 10);
+        amount = 10;
 
         // Initiate List
         wasteList = new List<Transform>();
+
+        // Set a random spawn position
+        spawnPosX = Random.Range(15.0f, 45.0f);
+        spawnPosY = Random.Range(-20.0f, 20.0f);
+
+        // Start the coroutine
+        StartCoroutine(Spawn());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Physics2D.OverlapCircle(player.transform.position, 0.2f, triggerLayer) != null)
+        // Update random spawn position
+        spawnPosX = Random.Range(15.0f, 45.0f);
+        spawnPosY = Random.Range(-20.0f, 20.0f);
+    }
+
+    // Spawn waste for each 30 seconds
+    private IEnumerator Spawn()
+    {
+        while(true)
         {
-            // Set a random spawn position
-            float spawnPosX = Random.Range(15.0f, 45.0f);
-            float spawnPosY = Random.Range(-20.0f, 20.0f);
             if (count != amount)
             {
-                // Set the vector 3 position
+                // Set the vector 2 position
                 Vector2 spawnPos = new Vector2(spawnPosX, spawnPosY);
-                whatToSpawn = Random.Range(1, 24);
+                whatToSpawn = Random.Range(1, 23);
 
                 // Instantiate copies of random Prefab and add to list
                 switch (whatToSpawn)
@@ -116,34 +129,12 @@ public class SpawnWaste : MonoBehaviour
                 }
                 count++;
             }
-        }
-        else
-        {
-            ClearWaste();
+            yield return new WaitForSeconds(30);
         }
     }
 
-    private void ClearWaste()
+    public void MinusCount()
     {
-        if (wasteList != null)
-        {
-            for (int i = 0; i < wasteList.Count; i++)
-            {
-                if (wasteList[i] != null)
-                {
-                    wasteScript = wasteList[i].gameObject.GetComponent<WasteScript>();
-                    if(wasteScript.equipped)
-                    {
-                        wasteScript.Detach();
-                    }
-                    Destroy(wasteList[i].gameObject);
-                }
-            }
-            wasteList.Clear();
-
-            // Reset the counter and set a new amount
-            count = 0;
-            amount = Random.Range(5, 10);
-        }
+        count -= 1;
     }
 }
