@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Quiz_TextList
+public class Dialog
 {
     [SerializeField] List<string> lines;
 

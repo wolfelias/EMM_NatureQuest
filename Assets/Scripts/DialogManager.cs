@@ -9,26 +9,52 @@ public class DialogManager : MonoBehaviour
     [SerializeField] Text dialogText;
     [SerializeField] int letterPerSecond;
 
+    private bool isTyping;
+    private int currentLine = 0;
+    Dialog dialog;
+
     public static DialogManager Instance { get; private set; }
-        private void Awake()
+    private void Awake()
     {
-        Instance = this;    
+        Instance = this;
     }
 
-    public void ShowDialog(Quiz_TextList quizText)
+    public IEnumerator ShowDialog(Dialog quizText)
     {
+        yield return new WaitForEndOfFrame();
+
+        this.dialog = quizText;
         dialogBox.SetActive(true);
         StartCoroutine(TypeText(quizText.Lines[0]));
     }
 
-    public IEnumerator TypeText(string quizText)
+    public void UpdateText()
     {
+        if (Input.GetKeyDown(KeyCode.E) && !isTyping)
+        {
+            ++currentLine;
+            if (currentLine < dialog.Lines.Count)
+            {
+                StartCoroutine(TypeText(dialog.Lines[currentLine]));
+            }
+            else
+            {
+                currentLine = 0;
+                dialogBox.SetActive(false);
+            }
+        }
+    }
+
+    public IEnumerator TypeText(string Line)
+    {
+        isTyping = true;
         dialogText.text = "";
-        foreach (var letter in quizText.ToCharArray())
+        foreach (var letter in Line.ToCharArray())
         {
             dialogText.text += letter;
             yield return new WaitForSeconds(1f / letterPerSecond);
         }
+        isTyping = false;
     }
 
 }
