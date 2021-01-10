@@ -3,115 +3,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState
+{
+    walk,
+    interact
+}
+
 public class PlayerMovement : MonoBehaviour
 {
-    // private int cnt = 0; 
-    public int speed = 10;
-    public LayerMask interactableLayer, solidObjectLayer;
-    public Rigidbody2D rb;
+    private PlayerState currentState;
 
-    private Vector2 input;
+    public float speed;
+    private Rigidbody2D rb;
+    private Vector3 change;
     private Animator animator;
-    private bool isMoving;
 
-    private void Awake()
+    public PlayerState CurrentState { 
+        get { return currentState; }
+        set { currentState = value; }
+    }
+
+    private void Start()
     {
+        currentState = PlayerState.walk;
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update() {
-        if(!isMoving)
-        {
-            input.x = Input.GetAxis("Horizontal");
-            input.y = Input.GetAxis("Vertical");
-
-            // no diagonal movement
-            if (input.x != 0) input.y = 0;
-
-            //transform.Translate(Vector2.up * (moveVertical * speed * Time.deltaTime));
-            //transform.Translate(Vector2.right * (moveHorizontal * speed * Time.deltaTime));
-
-            if (input != Vector2.zero)
-            {
-                animator.SetFloat("moveX", input.x);
-                animator.SetFloat("moveY", input.y);
-
-                var targetPos = transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-
-                if (IsWalkable(targetPos))
-                {
-                    StartCoroutine(Move(targetPos));
-                    //Move();   // Kein Hängenbleiben an collidern bzw. "wackeln", aber animation funzt nicht bzw. muss anders erreicht werden
-                }
-            }
-        }
-
-        animator.SetBool("isMoving", isMoving);
-
-        if (CheckInteractInFront())
-        {
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.E)) {
-            Interact();
-        }
-    }
-
-    private void Interact()
-    {  
-        var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
-        var interactPos = transform.position + facingDir;
-
-        var collider = Physics2D.OverlapCircle(interactPos, 0.5f, interactableLayer);
-        if(collider != null) {
-            collider.GetComponent<Interactable_Interface>()?.Interact();            
-        }        
-    }
-
-    private bool CheckInteractInFront()
+    private void Update()
     {
-        var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
-        var interactPos = transform.position + facingDir;
-
-        var collider = Physics2D.OverlapCircle(interactPos, 0.5f, interactableLayer);
-        if (collider != null)
+        change = Vector3.zero;
+        change.x = Input.GetAxis("Horizontal");
+        change.y = Input.GetAxis("Vertical");
+        if (currentState == PlayerState.walk)
         {
-            return true;
-        }
-        return false;
+            UpdateAnimation();
+        }       
     }
 
-    /*
-    private void Move()
+    void UpdateAnimation()
     {
-        isMoving = true;
-        rb.velocity = new Vector2(input.x, input.y);
-        isMoving = false;
-    }
-    */
-
-    IEnumerator Move(Vector3 targetPos) {
-        isMoving = true;
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+        if (change != Vector3.zero)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-            yield return null;
+            MoveCharacter();
+            animator.SetFloat("moveX", change.x);
+            animator.SetFloat("moveY", change.y);
+            animator.SetBool("isMoving", true);
         }
-        transform.position = targetPos;
-        isMoving = false;
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
     }
 
-    private bool IsWalkable(Vector3 targetPos)
+    void MoveCharacter()
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.3f, solidObjectLayer | interactableLayer) != null)
-        {
-            return false;
-        }
-            return true;
+        // Normalize 'change' to make diagonal movement slower
+        change.Normalize();
+        rb.MovePosition(transform.position + change * speed * Time.deltaTime);
     }
-
-
 }
