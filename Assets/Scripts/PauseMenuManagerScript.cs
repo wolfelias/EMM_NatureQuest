@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,18 +21,23 @@ public class PauseMenuManagerScript : MonoBehaviour
     public GameObject pauseMenuPanel;
     public GameObject mainMenuPanel;
     public GameObject aboutText;
+    public GameObject TimeText;
+    public GameObject LostText;
 
     private bool TimelessMode = true;
     private bool _menuIsActive = true;
 
+    private TimerController timer;
 
     // Start is called before the first frame update
     void Start()
     {
+        timer = TimerController.Instance;
+
         newGameButton.onClick.AddListener(ShowGameTypeMenu);
         backButton.onClick.AddListener(ShowMainMenu);
-        timelessModeButton.onClick.AddListener(StartGame);
-        survivalModeButton.onClick.AddListener(StartGame);
+        timelessModeButton.onClick.AddListener(StartGameTimelessMode);
+        survivalModeButton.onClick.AddListener(StartGameSurvivalMode);
         restartButton.onClick.AddListener(RestartGame);
         returnButton.onClick.AddListener(ContinueGame);
         aboutButton.onClick.AddListener(ShowAboutPage);
@@ -42,10 +48,6 @@ public class PauseMenuManagerScript : MonoBehaviour
         {
             Time.timeScale = 0;
             ShowMainMenu();
-        }
-        else
-        {
-            StartGame();
         }
     }
 
@@ -60,12 +62,18 @@ public class PauseMenuManagerScript : MonoBehaviour
         {
             ContinueGame();
         }
+
+        if (timer.maxTime <= TimeSpan.Zero)
+        {
+            Time.timeScale = 0.0f;
+            ShowLostMenu();
+        }
     }
 
     void RestartGame()
     {
         _menuIsActive = false;
-        
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         // ContinueGame();
     }
@@ -88,6 +96,7 @@ public class PauseMenuManagerScript : MonoBehaviour
         mainMenuPanel.SetActive(true);
         aboutText.SetActive(false);
         menu.SetActive(true);
+        LostText.SetActive(false);
         _menuIsActive = true;
 
         Time.timeScale = 0;
@@ -103,6 +112,7 @@ public class PauseMenuManagerScript : MonoBehaviour
         returnButton.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         goToMainMenButton.gameObject.SetActive(false);
+        LostText.SetActive(false);
         pauseMenuPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
         aboutText.SetActive(false);
@@ -122,6 +132,7 @@ public class PauseMenuManagerScript : MonoBehaviour
         returnButton.gameObject.SetActive(true);
         backButton.gameObject.SetActive(false);
         goToMainMenButton.gameObject.SetActive(true);
+        LostText.SetActive(false);
         pauseMenuPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
         aboutText.SetActive(false);
@@ -141,6 +152,7 @@ public class PauseMenuManagerScript : MonoBehaviour
         returnButton.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         goToMainMenButton.gameObject.SetActive(false);
+        LostText.SetActive(false);
         pauseMenuPanel.SetActive(false);
         mainMenuPanel.SetActive(false);
         aboutText.SetActive(false);
@@ -159,6 +171,7 @@ public class PauseMenuManagerScript : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         returnButton.gameObject.SetActive(false);
         goToMainMenButton.gameObject.SetActive(false);
+        LostText.SetActive(false);
         backButton.gameObject.SetActive(true);
         pauseMenuPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
@@ -170,7 +183,7 @@ public class PauseMenuManagerScript : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    void StartGame()
+    void StartGameTimelessMode()
     {
         aboutButton.gameObject.SetActive(false);
         newGameButton.gameObject.SetActive(false);
@@ -180,24 +193,58 @@ public class PauseMenuManagerScript : MonoBehaviour
         returnButton.gameObject.SetActive(false);
         backButton.gameObject.SetActive(false);
         goToMainMenButton.gameObject.SetActive(false);
+        LostText.SetActive(false);
         pauseMenuPanel.SetActive(false);
         mainMenuPanel.SetActive(false);
         aboutText.SetActive(false);
         menu.SetActive(false);
         _menuIsActive = false;
 
-        if (!TimelessMode)
-        {
-            StartTimer();
-        }
-        
+        TimeText.SetActive(false);
+
         Time.timeScale = 1.0f;
     }
 
-    void StartTimer ()
+    void StartGameSurvivalMode()
     {
-        
+        aboutButton.gameObject.SetActive(false);
+        newGameButton.gameObject.SetActive(false);
+        survivalModeButton.gameObject.SetActive(false);
+        timelessModeButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+        returnButton.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(false);
+        goToMainMenButton.gameObject.SetActive(false);
+        LostText.SetActive(false);
+        pauseMenuPanel.SetActive(false);
+        mainMenuPanel.SetActive(false);
+        aboutText.SetActive(false);
+        TimeText.SetActive(true);
+        menu.SetActive(false);
+        _menuIsActive = false;
+
+        Time.timeScale = 1.0f;
+
+        timer.BeginTimer();
     }
 
+    void ShowLostMenu()
+    {
+        aboutButton.gameObject.SetActive(false);
+        newGameButton.gameObject.SetActive(false);
+        survivalModeButton.gameObject.SetActive(false);
+        timelessModeButton.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(true);
+        returnButton.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(false);
+        goToMainMenButton.gameObject.SetActive(true);
+        LostText.SetActive(true);
+        pauseMenuPanel.SetActive(true);
+        mainMenuPanel.SetActive(true);
+        aboutText.SetActive(false);
+        menu.SetActive(true);
+        _menuIsActive = true;
 
+        Time.timeScale = 0;
+    }
 }
