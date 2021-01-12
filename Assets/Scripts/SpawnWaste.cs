@@ -5,9 +5,9 @@ using UnityEngine;
 public class SpawnWaste : MonoBehaviour
 {
     public Transform laundrySoapBottle, milkJug, plasticBottle, polystyreneFoamCup, pressurizedSprayCan, sodaCan, steelCan, tunaCan;
-    public Transform brownBag, cardboardBox, greasyPizzaBox, newspaper;
-    public Transform apple, banana, coffeeBeans, eggs, teaLeaf;
-    public Transform ceramicMug;
+    public Transform brownBag, cardboardBox, newspaper;
+    public Transform apple, driedFlower, eggs, fishbone, tea;
+    public Transform brokenCup, brokenMirror, cigarette, mask, pizzaCarton;
     public Transform beerBottle, greenSodaBottle, masonJar, wineGlass;
     
     public Transform player;
@@ -55,7 +55,7 @@ public class SpawnWaste : MonoBehaviour
             {
                 // Set the vector 2 position
                 Vector2 spawnPos = new Vector2(spawnPosX, spawnPosY);
-                whatToSpawn = Random.Range(1, 23);
+                whatToSpawn = Random.Range(1, 26);
 
                 // Instantiate copies of random Prefab and add to list
                 switch (whatToSpawn)
@@ -91,39 +91,48 @@ public class SpawnWaste : MonoBehaviour
                         wasteList.Add(Instantiate(cardboardBox, spawnPos, Quaternion.identity));
                         break;
                     case 11:
-                        wasteList.Add(Instantiate(greasyPizzaBox, spawnPos, Quaternion.identity));
-                        break;
-                    case 12:
                         wasteList.Add(Instantiate(newspaper, spawnPos, Quaternion.identity));
                         break;
-                    case 13:
+                    case 12:
                         wasteList.Add(Instantiate(apple, spawnPos, Quaternion.identity));
                         break;
+                    case 13:
+                        wasteList.Add(Instantiate(driedFlower, spawnPos, Quaternion.identity));
+                        break;
                     case 14:
-                        wasteList.Add(Instantiate(banana, spawnPos, Quaternion.identity));
-                        break;
-                    case 15:
-                        wasteList.Add(Instantiate(coffeeBeans, spawnPos, Quaternion.identity));
-                        break;
-                    case 16:
                         wasteList.Add(Instantiate(eggs, spawnPos, Quaternion.identity));
                         break;
+                    case 15:
+                        wasteList.Add(Instantiate(fishbone, spawnPos, Quaternion.identity));
+                        break;
+                    case 16:
+                        wasteList.Add(Instantiate(tea, spawnPos, Quaternion.identity));
+                        break;
                     case 17:
-                        wasteList.Add(Instantiate(teaLeaf, spawnPos, Quaternion.identity));
+                        wasteList.Add(Instantiate(brokenCup, spawnPos, Quaternion.identity));
                         break;
                     case 18:
-                        wasteList.Add(Instantiate(ceramicMug, spawnPos, Quaternion.identity));
+                        wasteList.Add(Instantiate(brokenMirror, spawnPos, Quaternion.identity));
                         break;
                     case 19:
-                        wasteList.Add(Instantiate(beerBottle, spawnPos, Quaternion.identity));
+                        wasteList.Add(Instantiate(cigarette, spawnPos, Quaternion.identity));
                         break;
                     case 20:
-                        wasteList.Add(Instantiate(greenSodaBottle, spawnPos, Quaternion.identity));
+                        wasteList.Add(Instantiate(mask, spawnPos, Quaternion.identity));
                         break;
                     case 21:
-                        wasteList.Add(Instantiate(masonJar, spawnPos, Quaternion.identity));
+                        wasteList.Add(Instantiate(pizzaCarton, spawnPos, Quaternion.identity));
                         break;
                     case 22:
+                        wasteList.Add(Instantiate(beerBottle, spawnPos, Quaternion.identity));
+                        break;
+                    case 23:
+                        wasteList.Add(Instantiate(greenSodaBottle, spawnPos, Quaternion.identity));
+                        break;
+                    case 24:
+                        wasteList.Add(Instantiate(masonJar, spawnPos, Quaternion.identity));
+                        break;
+                    case 25:
                         wasteList.Add(Instantiate(wineGlass, spawnPos, Quaternion.identity));
                         break;
                 }
