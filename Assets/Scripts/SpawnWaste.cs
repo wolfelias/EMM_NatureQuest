@@ -18,6 +18,8 @@ public class SpawnWaste : MonoBehaviour
 
     private float spawnPosX, spawnPosY;
 
+    public int timeTilNext = 30;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -138,7 +140,7 @@ public class SpawnWaste : MonoBehaviour
                 }
                 count++;
             }
-            yield return new WaitForSeconds(30);
+            yield return new WaitForSeconds(timeTilNext);
         }
     }
 
