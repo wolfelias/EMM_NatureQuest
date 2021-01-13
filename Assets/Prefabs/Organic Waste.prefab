@@ -143,8 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2414e8e6b9d74311b2f9c043c6d87e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 5372207087810736178}
-  collider: {fileID: 7706026907157990}
+  rigidBody: {fileID: 5372207087810736178}
+  boxCollider: {fileID: 7706026907157990}
+  triggerLayer:
+    serializedVersion: 2
+    m_Bits: 512
   pickUpRange: 5
   equipped: 0
   dropRange: 5
