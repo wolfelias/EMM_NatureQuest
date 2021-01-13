@@ -9,7 +9,7 @@ public enum PlayerState
     interact
 }
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementQuiz : MonoBehaviour
 {
     private PlayerState currentState;
 
