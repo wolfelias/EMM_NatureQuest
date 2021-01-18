@@ -50,7 +50,7 @@ PrefabInstance:
     - target: {fileID: 1684569623620027927, guid: 9df85827c69c440a2b645ffc274770f8,
         type: 3}
       propertyPath: m_Name
-      value: Ceramic Mug
+      value: Broken Cup
       objectReference: {fileID: 0}
     - target: {fileID: 3767267002796627209, guid: 9df85827c69c440a2b645ffc274770f8,
         type: 3}
@@ -137,6 +137,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490104934961378538, guid: 9df85827c69c440a2b645ffc274770f8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490104934961378538, guid: 9df85827c69c440a2b645ffc274770f8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9df85827c69c440a2b645ffc274770f8, type: 3}
