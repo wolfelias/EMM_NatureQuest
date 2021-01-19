@@ -50,12 +50,12 @@ public class WaterPipeManager : MonoBehaviour
     // If the pipe set is completed, spawn a new pipeset after 15 seconds
     private IEnumerator CheckCompleted()
     {
-        while(true)
+        while (true)
         {
             if (isCompleted)
             {
                 selection++;
-                if(selection == PipeSet.Length)
+                if (selection == PipeSet.Length)
                     selection = 0;
                 yield return new WaitForSeconds(15);
                 Destroy(Temp);
@@ -101,7 +101,7 @@ public class WaterPipeManager : MonoBehaviour
     {
         ResetVariables();
         PipesHolder = PipeSet[selection];
-        Temp = Instantiate(PipesHolder, new Vector3(-52, 4, 0), Quaternion.identity);
+        Temp = Instantiate(PipesHolder, new Vector3(35, 67, 0), Quaternion.identity);
 
         totalPipes = PipesHolder.transform.childCount;
         Pipes = new GameObject[totalPipes];
