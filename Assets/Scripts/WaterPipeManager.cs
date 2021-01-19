@@ -101,7 +101,7 @@ public class WaterPipeManager : MonoBehaviour
     {
         ResetVariables();
         PipesHolder = PipeSet[selection];
-        Temp = Instantiate(PipesHolder, new Vector3(-52, 4, 0), Quaternion.identity);
+        Temp = Instantiate(PipesHolder, new Vector3(32, 52.7f, 0), Quaternion.identity);
 
         totalPipes = PipesHolder.transform.childCount;
         Pipes = new GameObject[totalPipes];
