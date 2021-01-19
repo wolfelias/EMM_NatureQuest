@@ -18,6 +18,7 @@ public class WasteScript : MonoBehaviour
 
     private Health playerHealth;
     public SpawnWaste spawnWaste;
+    public LayerMask triggerLayer;
 
     private void Start()
     {
@@ -38,10 +39,12 @@ public class WasteScript : MonoBehaviour
     {
         // Check if player is in range and "E" is pressed
         Vector2 distanceToPlayer = player.position - transform.position;
-        if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull) PickUp();
+        if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull && Physics2D.OverlapCircle(player.transform.position, 0.2f, triggerLayer) != null)
+            PickUp();
 
         // Drop if equipped and "Q" is pressed
-        if (equipped && Input.GetKeyDown(KeyCode.Q)) Drop();
+        if (equipped && Input.GetKeyDown(KeyCode.Q))
+            Drop();
     }
 
     private void PickUp()
@@ -72,7 +75,7 @@ public class WasteScript : MonoBehaviour
         if (distanceToRecycleBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("RecyclableMaterial")) playerHealth.IncreaseHealth(5);  
+            if (CompareTag("RecyclableMaterial")) playerHealth.IncreaseHealth(5);
             else playerHealth.DecreaseHealth(5);
         }
         else if (distanceToPaperBin.magnitude <= dropRange)
@@ -100,6 +103,12 @@ public class WasteScript : MonoBehaviour
             else playerHealth.DecreaseHealth(5);
         }
 
+        Detach();
+    }
+
+    public void Detach()
+    {
+        // Unequipped waste if trigger area leaved
         equipped = false;
         slotFull = false;
 

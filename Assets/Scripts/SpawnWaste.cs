@@ -15,6 +15,7 @@ public class SpawnWaste : MonoBehaviour
 
     private int count, amount, whatToSpawn;
     private List<Transform> wasteList;
+    private WasteScript wasteScript;
 
     private float spawnPosX, spawnPosY;
 
@@ -40,12 +41,12 @@ public class SpawnWaste : MonoBehaviour
         StartCoroutine(Spawn());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Update random spawn position
-        spawnPosX = Random.Range(28.0f, 60.0f);
-        spawnPosY = Random.Range(-8.0f, -44.0f);
+        if (Physics2D.OverlapCircle(player.transform.position, 0.2f, triggerLayer) == null)
+            {
+                DropWaste();
+            }
     }
 
     // Spawn waste for each 30 seconds
@@ -53,6 +54,9 @@ public class SpawnWaste : MonoBehaviour
     {
         while(true)
         {
+            // Update random spawn position
+            spawnPosX = Random.Range(28.0f, 60.0f);
+            spawnPosY = Random.Range(-8.0f, -44.0f);
             if (count != amount)
             {
                 // Set the vector 2 position
@@ -141,6 +145,24 @@ public class SpawnWaste : MonoBehaviour
                 count++;
             }
             yield return new WaitForSeconds(timeTilNext);
+        }
+    }
+
+    private void DropWaste()
+    {
+        if (wasteList != null)
+        {
+            for (int i = 0; i < wasteList.Count; i++)
+            {
+                if (wasteList[i] != null)
+                {
+                    wasteScript = wasteList[i].gameObject.GetComponent<WasteScript>();
+                    if(wasteScript.equipped)
+                    {
+                        wasteScript.Detach();
+                    }
+                }
+            }
         }
     }
 

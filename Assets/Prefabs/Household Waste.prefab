@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1948053739
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.30980393, g: 0.36862746, b: 0.37647063, a: 1}
@@ -149,3 +149,6 @@ MonoBehaviour:
   equipped: 0
   dropRange: 5
   spawnWaste: {fileID: 0}
+  triggerLayer:
+    serializedVersion: 2
+    m_Bits: 512
