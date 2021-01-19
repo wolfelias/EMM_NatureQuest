@@ -33,8 +33,8 @@ public class SpawnWaste : MonoBehaviour
         wasteList = new List<Transform>();
 
         // Set a random spawn position
-        spawnPosX = Random.Range(15.0f, 45.0f);
-        spawnPosY = Random.Range(-20.0f, 20.0f);
+        spawnPosX = Random.Range(28.0f, 60.0f);
+        spawnPosY = Random.Range(-8.0f, -44.0f);
 
         // Start the coroutine
         StartCoroutine(Spawn());
@@ -44,8 +44,8 @@ public class SpawnWaste : MonoBehaviour
     void Update()
     {
         // Update random spawn position
-        spawnPosX = Random.Range(15.0f, 45.0f);
-        spawnPosY = Random.Range(-20.0f, 20.0f);
+        spawnPosX = Random.Range(28.0f, 60.0f);
+        spawnPosY = Random.Range(-8.0f, -44.0f);
     }
 
     // Spawn waste for each 30 seconds
