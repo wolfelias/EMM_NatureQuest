@@ -9,7 +9,7 @@ public enum PlayerState
     interact
 }
 
-public class PlayerMovementQuiz : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private PlayerState currentState;
 
@@ -60,6 +60,9 @@ public class PlayerMovementQuiz : MonoBehaviour
     {
         // Normalize 'change' to make diagonal movement slower
         change.Normalize();
-        rb.MovePosition(transform.position + change * speed * Time.deltaTime);
+        
+        //rb.MovePosition(transform.position + change * (speed * Time.deltaTime));
+        rb.position = Vector3.Lerp(transform.position, transform.position + change* (speed * Time.deltaTime),
+            0.5f);
     }
 }
