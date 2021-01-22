@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Health : MonoBehaviour
     public int maxHealth = 100;
 
     public HealthBar healthBar;
+    public GameObject floatingPoints;
 
     // Start is called before the first frame update
     void Start()
@@ -16,16 +18,15 @@ public class Health : MonoBehaviour
         curHealth = maxHealth / 2;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void DecreaseHealth(int damage)
     {
         if (curHealth > minHealth)
         {
+            GameObject points = Instantiate(floatingPoints, healthBar.transform.position, Quaternion.identity) as GameObject;
+            points.transform.SetParent(healthBar.transform);
+            points.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "- " + damage;
+            points.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.red;
+
             curHealth -= damage;
             healthBar.SetHealth(curHealth);
         }
@@ -35,6 +36,11 @@ public class Health : MonoBehaviour
     {
         if (curHealth < maxHealth)
         {
+            GameObject points = Instantiate(floatingPoints, healthBar.transform.position, Quaternion.identity) as GameObject;
+            points.transform.SetParent(healthBar.transform);
+            points.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "+ " + hp;
+            points.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
+
             curHealth += hp;
             healthBar.SetHealth(curHealth);
         }
