@@ -105,6 +105,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5745256840176811405}
   playerHealth: {fileID: 0}
+  mText: {fileID: 8290871899094279953}
+  floatingPoints: {fileID: 1049704069866617077, guid: 2e1d6247365a748f8a59a06331923b15,
+    type: 3}
 --- !u!1 &5745256840454282917
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,8 +638,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 136.21, y: -0.00000077485}
-  m_SizeDelta: {x: 72.418335, y: 20}
+  m_AnchoredPosition: {x: 135.99998, y: -0.00000077485}
+  m_SizeDelta: {x: 72, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6017158734695699096
 CanvasRenderer:
