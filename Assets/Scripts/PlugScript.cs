@@ -2,41 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickable : MonoBehaviour
+public class PlugScript : MonoBehaviour
 {
     public bool equipped;
     public static bool slotFull;
     public Rigidbody2D rigidBody;
+
     private bool isNearOutlet;
     private bool isPickable;
+    public bool isPlugged;
+
     private Transform container;
     private Transform plugs;
     private Vector3 outletPosition;
-    private LineManager lineManager;
-
-    private void Awake()
-    {
-        // Get the line manager component
-        lineManager = GameObject.Find("LineManager").GetComponent<LineManager>();
-    }
 
     // Start is called before the first frame update
     void Start()
     {
         container = GameObject.Find("Container").transform;
-        plugs = GameObject.Find("plugs").transform;
+        plugs = GameObject.Find("plug").transform;
+        isPlugged = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!lineManager.isCompleted)
-        {
-            if (!equipped && Input.GetKeyDown(KeyCode.E) && !slotFull && isPickable)
-                PickUp();
-            if (equipped && Input.GetKeyDown(KeyCode.Q))
-                Drop();
-        }
+        if (!equipped && Input.GetKeyDown(KeyCode.E) && !slotFull && isPickable)
+            PickUp();
+        if (equipped && Input.GetKeyDown(KeyCode.Q))
+            Drop();
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -69,8 +63,7 @@ public class Pickable : MonoBehaviour
         equipped = true;
         slotFull = true;
         transform.SetParent(container);
-        transform.localPosition = new Vector3(-1f, -2f, 0);
-        transform.localRotation = Quaternion.Euler(Vector3.zero);
+        transform.localPosition = new Vector3(0, -0.5f, 0);
         rigidBody.isKinematic = true;
     }
 
@@ -84,10 +77,12 @@ public class Pickable : MonoBehaviour
         {
             transform.SetParent(plugs);
             transform.position = outletPosition;
+            isPlugged = true;
         }
         else
         {
             transform.SetParent(plugs);
+            isPlugged = false;
         }
     }
 }
