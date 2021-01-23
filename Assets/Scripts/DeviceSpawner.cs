@@ -13,7 +13,7 @@ public class DeviceSpawner : MonoBehaviour
     {
         totalDevices = DevicesHolder.transform.childCount;
         Devices = new Transform[totalDevices];
-        Vector2 spawnPos = new Vector2(43, -9);
+        Vector2 spawnPos = new Vector2(0, 12);
 
         // int j = Random.Range(0, Devices.Length);
         // int range = Random.Range(1, Devices.Length - 1);
@@ -21,7 +21,9 @@ public class DeviceSpawner : MonoBehaviour
         {
             // if (j >= Devices.Length) j %= Devices.Length;
             Devices[i] = DevicesHolder.transform.GetChild(i).transform;
-            (Instantiate(Devices[i], spawnPos, Quaternion.identity) as Transform).SetParent(GameObject.Find("DeviceSpawner").transform);
+            Transform device = Instantiate(Devices[i], spawnPos, Quaternion.identity) as Transform;
+            device.SetParent(GameObject.Find("DeviceSpawner").transform);
+            device.localPosition = spawnPos;
             spawnPos.y -= 4;
             // j += range;
         }
