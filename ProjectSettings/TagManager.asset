@@ -9,6 +9,7 @@ TagManager:
   - HouseholdWaste
   - GlassWaste
   - RecyclableMaterial
+  - PipeSet
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - SolidObjects
   - Trigger
-  - 
+  - Player
   - 
   - 
   - 
