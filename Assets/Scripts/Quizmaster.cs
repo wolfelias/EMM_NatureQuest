@@ -44,31 +44,60 @@ public class Quizmaster : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerInRange && countPressE == 1)
+        // activates the 2nd time the player talks to the Quizmaster --> starts the game
+        if (Input.GetKeyDown(KeyCode.E) && playerInRange && countPressE == 1 && !gameFinished)
         {
             countPressE++;
             isInGame = true;
             playerOnEnterHealth = playerHealth.CurHealth;
-            dialogText.text = currentQuestion.question;
-            //    StartQuestGame();
+            //dialogText.text = currentQuestion.question;
+            StopAllCoroutines();
+            StartCoroutine(TypeText(currentQuestion.question));
+            // StartQuestGame();
             // StartQuestGameTwo();
         }
+        // activates the first time the player talks to the Quizmaster --> starts dialog
         if (Input.GetKeyDown(KeyCode.E) && playerInRange && countPressE == 0)
         {
-                Debug.Log("First Text");
-                dialogBox.SetActive(true);
-                dialogText.text = openingText;
-                animator.SetBool("IsOpen", true);
-                countPressE++;
-                Debug.Log("Update DownPart " + countPressE);
+            Debug.Log("First Text");
+            dialogBox.SetActive(true);
+            //dialogText.text = openingText;
+            StopAllCoroutines();
+            StartCoroutine(TypeText(openingText));
+            animator.SetBool("IsOpen", true);
+            countPressE++;
+            Debug.Log("Update DownPart " + countPressE);
         }
-        if (Input.GetKeyDown(KeyCode.T) && playerInRange && isInGame && !gameFinished)
+        // every time the player talks to the quizmaster, after game started
+        if (Input.GetKeyDown(KeyCode.E) && playerInRange && countPressE > 1 && !isInGame)
         {
-            checkPlayerAnswer(KeyCode.T);
+            if (answeredQuestions == questionsToAnswer)
+            {
+                openingText = "Ok so you have finished my Quiz. Now go on. " +
+                "The world is large and you may be needed at another place! Goodbye.";
+                gameFinished = true;
+                isInGame = false;
+                //dialogText.text = openingText;
+                StopAllCoroutines();
+                StartCoroutine(TypeText(openingText));
+            } else
+            {
+            isInGame = true;
+                //dialogText.text = currentQuestion.question;
+                StopAllCoroutines();
+                StartCoroutine(TypeText(currentQuestion.question));
+            }
         }
-        if (Input.GetKeyDown(KeyCode.F) && playerInRange && isInGame && !gameFinished)
+        if (isInGame && !gameFinished)
         {
-            checkPlayerAnswer(KeyCode.F);
+            if (Input.GetKeyDown(KeyCode.T) && playerInRange)
+            {
+                checkPlayerAnswer(KeyCode.T);
+            }
+            if (Input.GetKeyDown(KeyCode.F) && playerInRange)
+            {
+                checkPlayerAnswer(KeyCode.F);
+            }
         }
     }
 
@@ -83,7 +112,7 @@ public class Quizmaster : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             signal.Raise();
             playerInRange = false;
@@ -92,18 +121,20 @@ public class Quizmaster : MonoBehaviour
             if (!gameFinished)
             {
                 unansweredQuestions = questions.ToList<Question>();
-                for(int i = 0; i < answeredQuestions; i++)
+                for (int i = 0; i < answeredQuestions; i++)
                 {
-                    Debug.Log("health");
                     if (playerHealth.CurHealth > playerOnEnterHealth)
                     {
                         playerHealth.DecreaseHealth(rewardHealthPoints);
-                    } else if (playerHealth.CurHealth < playerOnEnterHealth)
+                    }
+                    else if (playerHealth.CurHealth < playerOnEnterHealth)
                     {
                         playerHealth.IncreaseHealth(rewardHealthPoints);
                     }
                 }
                 answeredQuestions = 0;
+                isInGame = false;
+                countPressE = 0;
             }
 
             /*
@@ -124,6 +155,8 @@ public class Quizmaster : MonoBehaviour
 
         unansweredQuestions.RemoveAt(randomQuestionIndex);
     }
+
+    /*
     private void StartQuestGame()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -147,7 +180,7 @@ public class Quizmaster : MonoBehaviour
     private void StartQuestGameTwo()
     {
         Debug.Log("StartTwo");
-        /*
+        
         for (int i = 0; i < questionsToAnswer; i++)
         {
             dialogText.text = currentQuestion.question;
@@ -158,8 +191,8 @@ public class Quizmaster : MonoBehaviour
         openingText = "Ok so you have finished my Quiz. Now go on. " +
             "The world is large and you may be needed at another place! Goodbye.";
         dialogText.text = openingText;
-        */
-    }
+        
+    } 
 
     IEnumerator WaitPlayerChoice(KeyCode[] codes)
     {
@@ -179,34 +212,51 @@ public class Quizmaster : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
     }
+    */
+
     private void checkPlayerAnswer(KeyCode k)
     {
         answeredQuestions++;
-        if((k == KeyCode.T && currentQuestion.isTrue) || (k == KeyCode.F && !currentQuestion.isTrue))
+        if ((k == KeyCode.T && currentQuestion.isTrue) || (k == KeyCode.F && !currentQuestion.isTrue))
         {
-            dialogText.text = "Yeaaaah! This was correct.";
+            //dialogText.text = "Yeaaaah! This was correct.";
+            StopAllCoroutines();
+            StartCoroutine(TypeText("Yeaaaah! This was correct."));
             playerHealth.IncreaseHealth(rewardHealthPoints);
-        } else
+            isInGame = false;
+        }
+        else
         {
-            dialogText.text = "Sorry, but that answer wasn't correct.";
+            //dialogText.text = "Sorry, but that answer wasn't correct.";
+            StopAllCoroutines();
+            StartCoroutine(TypeText("Sorry, but that answer wasn't correct."));
             playerHealth.DecreaseHealth(rewardHealthPoints);
+            isInGame = false;
         }
-        GetRandomQuestion();
-        if(answeredQuestions == questionsToAnswer)
+        if (answeredQuestions < questionsToAnswer)
         {
-            openingText = "Ok so you have finished my Quiz. Now go on. " +
-            "The world is large and you may be needed at another place! Goodbye.";
-            gameFinished = true;
-            dialogText.text = openingText;
+        GetRandomQuestion();
         }
+    }
 
+    IEnumerator TypeText(string text)
+    {
+        dialogText.text = "";
+        foreach(char letter in text.ToCharArray())
+        {
+            dialogText.text += letter;
+            yield return null;
+        }
     }
 
     IEnumerator WaitForDialogBox()
     {
         yield return new WaitForSeconds(0.4f);
-        dialogText.text = "";
+        if (!gameFinished)
+        {
+            dialogText.text = "";
+        }
         countPressE = 0;
-        dialogBox.SetActive(false);
+        dialogBox.SetActive(false);        
     }
 }

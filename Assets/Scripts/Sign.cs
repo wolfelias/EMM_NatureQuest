@@ -39,16 +39,12 @@ public class Sign : MonoBehaviour
             else
             {
                 dialogBox.SetActive(true);
-                dialogText.text = signText;
+                //dialogText.text = signText;
                 animator.SetBool("IsOpen", true);
+                StopAllCoroutines();
+                StartCoroutine(TypeText(signText));
             }
         }
-    }
-    IEnumerator WaitForDialogBox()
-    {
-        yield return new WaitForSeconds(0.4f);
-        dialogText.text = "";
-        dialogBox.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -78,6 +74,20 @@ public class Sign : MonoBehaviour
             StartCoroutine(WaitForDialogBox());
         }
     }
-
+    IEnumerator TypeText(string text)
+    {
+        dialogText.text = "";
+        foreach (char letter in text.ToCharArray())
+        {
+            dialogText.text += letter;
+            yield return null;
+        }
+    }
+    IEnumerator WaitForDialogBox()
+    {
+        yield return new WaitForSeconds(0.4f);
+        dialogText.text = "";
+        dialogBox.SetActive(false);
+    }
 
 }
