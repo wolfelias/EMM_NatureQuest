@@ -6,6 +6,7 @@ public class LineController : MonoBehaviour
 {
     private LineRenderer lineRenderer;
     private Transform[] points;
+    public bool isStraight;
 
     private void Awake()
     {
@@ -25,5 +26,14 @@ public class LineController : MonoBehaviour
         {
             lineRenderer.SetPosition(i, points[i].position);
         }
+        CheckStraight();
+    }
+
+    public bool CheckStraight()
+    {
+        if (lineRenderer.GetPosition(0).y == lineRenderer.GetPosition(1).y)
+            return true;
+        else
+            return false;
     }
 }

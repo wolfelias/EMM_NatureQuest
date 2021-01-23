@@ -10,12 +10,14 @@ public class Pickable : MonoBehaviour
     private bool isNearOutlet;
     private bool isPickable;
     private Transform container;
+    private Transform plugs;
     private Vector3 outletPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         container = GameObject.Find("Container").transform;
+        plugs = GameObject.Find("plugs").transform;
     }
 
     // Update is called once per frame
@@ -69,8 +71,13 @@ public class Pickable : MonoBehaviour
         rigidBody.isKinematic = false;
 
         if (isNearOutlet)
+        {
+            transform.SetParent(plugs);
             transform.position = outletPosition;
+        }
         else
-            transform.SetParent(null);
+        {
+            transform.SetParent(plugs);
+        }
     }
 }

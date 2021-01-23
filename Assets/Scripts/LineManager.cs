@@ -5,55 +5,66 @@ using UnityEngine;
 public class LineManager : MonoBehaviour
 {
     [SerializeField] private GameObject line;
-    public Transform laptop, monitor, pc, smartphone, mixer, blender, toaster;
-    public Transform plug1, plug2, plug3, plug4, plug5, plug6, plug7;
 
-    void Awake()
+    public Transform DevicesHolder;
+    public Transform[] Devices;
+    public int totalDevices;
+
+    public Transform PlugsHolder;
+    public Transform[] Plugs;
+    public int totalPlugs;
+
+    private List<GameObject> LinesList;
+    [SerializeField] private int straightLines = 0;
+    [SerializeField] private bool isCompleted;
+
+    void Start()
     {
-        for (int i = 0; i < 7; i++)
+        LinesList = new List<GameObject>();
+
+        totalPlugs = PlugsHolder.transform.childCount;
+        Plugs = new Transform[totalPlugs];
+
+        totalDevices = DevicesHolder.transform.childCount;
+        Devices = new Transform[totalDevices];
+
+        int j = Random.Range(0, Devices.Length);
+        int range = Random.Range(2, Devices.Length - 1);
+
+        for (int i = 0; i < Plugs.Length; i++)
         {
-            Instantiate(line, Vector3.zero, Quaternion.identity);
-            if (i == 0)
-            {
-                Transform[] lines = { plug1, laptop };
-                line.GetComponent<DrawLine>().SetPoints(lines);
-            }
-            if (i == 1)
-            {
-                Transform[] lines = { plug2, monitor };
-                line.GetComponent<DrawLine>().SetPoints(lines);
-            }
-            if (i == 2)
-            {
-                Transform[] lines = { plug3, pc };
-                line.GetComponent<DrawLine>().SetPoints(lines);
-            }
-            if (i == 3)
-            {
-                Transform[] lines = { plug4, smartphone };
-                line.GetComponent<DrawLine>().SetPoints(lines);
-            }
-            if (i == 4)
-            {
-                Transform[] lines = { plug5, mixer };
-                line.GetComponent<DrawLine>().SetPoints(lines);
-            }
-            if (i == 5)
-            {
-                Transform[] lines = { plug6, blender };
-                line.GetComponent<DrawLine>().SetPoints(lines);
-            }
-            if (i == 6)
-            {
-                Transform[] lines = { plug7, toaster };
-                line.GetComponent<DrawLine>().SetPoints(lines);
-            }
+            if (j >= Devices.Length) j %= Devices.Length;
+            Plugs[i] = PlugsHolder.transform.GetChild(i).transform;
+            Devices[j] = DevicesHolder.transform.GetChild(j).transform;
+
+            Transform[] lines = { Plugs[i], Devices[j] };
+            line.GetComponent<DrawLine>().SetPoints(lines);
+
+            LinesList.Add(Instantiate(line, Vector3.zero, Quaternion.identity));
+
+            j += range;
         }
+
+        StartCoroutine(CheckGameCompleted());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator CheckGameCompleted()
     {
-
+        while (true)
+        {
+            straightLines = 0;
+            foreach (GameObject line in LinesList)
+            {   
+                if (line.GetComponent<LineController>().CheckStraight())
+                {
+                    straightLines++;
+                }
+            }
+            if (straightLines == LinesList.Count)
+            {
+                isCompleted = true;
+            }
+            yield return new WaitForSeconds(1);
+        }
     }
 }

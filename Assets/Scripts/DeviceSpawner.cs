@@ -9,7 +9,7 @@ public class DeviceSpawner : MonoBehaviour
     [SerializeField] private int totalDevices;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         totalDevices = DevicesHolder.transform.childCount;
         Devices = new Transform[totalDevices];
@@ -21,7 +21,7 @@ public class DeviceSpawner : MonoBehaviour
         {
             if (j >= Devices.Length) j %= Devices.Length;
             Devices[j] = DevicesHolder.transform.GetChild(j).transform;
-            Instantiate(Devices[j], spawnPos, Quaternion.identity);
+            (Instantiate(Devices[j], spawnPos, Quaternion.identity) as Transform).SetParent(GameObject.Find("Devices").transform);
             spawnPos.y -= 4;
             j += range;
         }
