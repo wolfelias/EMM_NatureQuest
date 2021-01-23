@@ -9,28 +9,37 @@ public class PlugScript : MonoBehaviour
     public Rigidbody2D rigidBody;
 
     private bool isNearOutlet;
+    private bool isNearSolarOutlet;
     private bool isPickable;
     public bool isPlugged;
+    public bool isReplugged;
 
     private Transform container;
-    private Transform plugs;
+    private Transform parentTransform;
     private Vector3 outletPosition;
+    private Vector3 tempPosition;
+    private LanternManager lanternManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        lanternManager = GameObject.Find("LanternManager").GetComponent<LanternManager>();
         container = GameObject.Find("Container").transform;
-        plugs = GameObject.Find("plug").transform;
+        parentTransform = transform.parent;
+        isReplugged = false;
         isPlugged = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!equipped && Input.GetKeyDown(KeyCode.E) && !slotFull && isPickable)
-            PickUp();
-        if (equipped && Input.GetKeyDown(KeyCode.Q))
-            Drop();
+        if (!lanternManager.isCompleted)
+        {
+            if (!equipped && Input.GetKeyDown(KeyCode.E) && !slotFull && isPickable)
+                PickUp();
+            if (equipped && Input.GetKeyDown(KeyCode.Q))
+                Drop();
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -42,6 +51,11 @@ public class PlugScript : MonoBehaviour
         if (other.tag == "Outlet")
         {
             isNearOutlet = true;
+            outletPosition = other.transform.position;
+        }
+        if (other.tag == "SolarOutlet")
+        {
+            isNearSolarOutlet = true;
             outletPosition = other.transform.position;
         }
     }
@@ -56,10 +70,19 @@ public class PlugScript : MonoBehaviour
         {
             isNearOutlet = false;
         }
+        if (other.tag == "SolarOutlet")
+        {
+            isNearSolarOutlet = false;
+        }
+        if (other.tag == "LanternArea" && equipped)
+        {
+            PutBack();
+        }
     }
 
     private void PickUp()
     {
+        tempPosition = transform.localPosition;
         equipped = true;
         slotFull = true;
         transform.SetParent(container);
@@ -69,20 +92,37 @@ public class PlugScript : MonoBehaviour
 
     private void Drop()
     {
-        equipped = false;
-        slotFull = false;
-        rigidBody.isKinematic = false;
-
+        Detach();
         if (isNearOutlet)
         {
-            transform.SetParent(plugs);
             transform.position = outletPosition;
+            isReplugged = false;
+            isPlugged = true;
+        }
+        else if (isNearSolarOutlet)
+        {
+            transform.position = outletPosition;
+            isReplugged = true;
             isPlugged = true;
         }
         else
         {
-            transform.SetParent(plugs);
+            isReplugged = false;
             isPlugged = false;
         }
+    }
+
+    private void PutBack()
+    {
+        Detach();
+        transform.localPosition = tempPosition;
+    }
+
+    private void Detach()
+    {
+        equipped = false;
+        slotFull = false;
+        rigidBody.isKinematic = false;
+        transform.SetParent(parentTransform);
     }
 }

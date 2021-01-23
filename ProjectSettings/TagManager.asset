@@ -11,6 +11,8 @@ TagManager:
   - RecyclableMaterial
   - PipeSet
   - Outlet
+  - SolarOutlet
+  - LanternArea
   layers:
   - Default
   - TransparentFX
