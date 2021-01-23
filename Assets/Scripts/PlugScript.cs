@@ -26,8 +26,8 @@ public class PlugScript : MonoBehaviour
         lanternManager = GameObject.Find("LanternManager").GetComponent<LanternManager>();
         container = GameObject.Find("Container").transform;
         parentTransform = transform.parent;
-        isReplugged = false;
         isPlugged = true;
+        isReplugged = false;
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class PlugScript : MonoBehaviour
     {
         if (!lanternManager.isCompleted)
         {
-            if (!equipped && Input.GetKeyDown(KeyCode.E) && !slotFull && isPickable)
+            if (!equipped && Input.GetKeyDown(KeyCode.E) && !slotFull && isPickable && !isReplugged)
                 PickUp();
             if (equipped && Input.GetKeyDown(KeyCode.Q))
                 Drop();
@@ -96,18 +96,18 @@ public class PlugScript : MonoBehaviour
         if (isNearOutlet)
         {
             transform.position = outletPosition;
-            isReplugged = false;
             isPlugged = true;
         }
         else if (isNearSolarOutlet)
         {
             transform.position = outletPosition;
-            isReplugged = true;
             isPlugged = true;
+            isReplugged = true;
+            lanternManager.Replugged();
+            lanternManager.ShowCurrentLantern();
         }
         else
         {
-            isReplugged = false;
             isPlugged = false;
         }
     }
