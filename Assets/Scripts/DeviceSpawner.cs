@@ -21,15 +21,9 @@ public class DeviceSpawner : MonoBehaviour
         {
             if (j >= Devices.Length) j %= Devices.Length;
             Devices[j] = DevicesHolder.transform.GetChild(j).transform;
-            (Instantiate(Devices[j], spawnPos, Quaternion.identity) as Transform).SetParent(GameObject.Find("Devices").transform);
+            (Instantiate(Devices[j], spawnPos, Quaternion.identity) as Transform).SetParent(GameObject.Find("DeviceSpawner").transform);
             spawnPos.y -= 4;
             j += range;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
