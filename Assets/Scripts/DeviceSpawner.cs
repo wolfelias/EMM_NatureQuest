@@ -15,15 +15,15 @@ public class DeviceSpawner : MonoBehaviour
         Devices = new Transform[totalDevices];
         Vector2 spawnPos = new Vector2(43, -9);
 
-        int j = Random.Range(0, Devices.Length);
-        int range = Random.Range(1, Devices.Length - 1);
+        // int j = Random.Range(0, Devices.Length);
+        // int range = Random.Range(1, Devices.Length - 1);
         for (int i = 0; i < Devices.Length; i++)
         {
-            if (j >= Devices.Length) j %= Devices.Length;
-            Devices[j] = DevicesHolder.transform.GetChild(j).transform;
-            (Instantiate(Devices[j], spawnPos, Quaternion.identity) as Transform).SetParent(GameObject.Find("DeviceSpawner").transform);
+            // if (j >= Devices.Length) j %= Devices.Length;
+            Devices[i] = DevicesHolder.transform.GetChild(i).transform;
+            (Instantiate(Devices[i], spawnPos, Quaternion.identity) as Transform).SetParent(GameObject.Find("DeviceSpawner").transform);
             spawnPos.y -= 4;
-            j += range;
+            // j += range;
         }
     }
 }

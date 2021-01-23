@@ -12,6 +12,13 @@ public class Pickable : MonoBehaviour
     private Transform container;
     private Transform plugs;
     private Vector3 outletPosition;
+    private LineManager lineManager;
+
+    private void Awake()
+    {
+        // Get the line manager component
+        lineManager = GameObject.Find("LineManager").GetComponent<LineManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +30,13 @@ public class Pickable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!equipped && Input.GetKeyDown(KeyCode.E) && !slotFull && isPickable)
-            PickUp();
-        if (equipped && Input.GetKeyDown(KeyCode.Q))
-            Drop();
+        if (!lineManager.isCompleted)
+        {
+            if (!equipped && Input.GetKeyDown(KeyCode.E) && !slotFull && isPickable)
+                PickUp();
+            if (equipped && Input.GetKeyDown(KeyCode.Q))
+                Drop();
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
