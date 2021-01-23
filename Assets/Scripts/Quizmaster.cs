@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Quizmaster : MonoBehaviour
 {
@@ -12,10 +13,27 @@ public class Quizmaster : MonoBehaviour
     public string dialog;
     private bool playerInRange;
 
+    public Question[] questions;
+    private static List<Question> unansweredQuestions;
+
+    private Question currentQuestion;
+
     private void Start()
     {
         dialogBox.SetActive(false);
         animator.SetBool("IsOpen", false);
+        dialogText.text = "Hello Adventurer! I am the Quizmaster";
+
+        if (unansweredQuestions == null || unansweredQuestions.Count == 0)
+        {
+            unansweredQuestions = questions.ToList<Question>();
+        }
+        GetRandomQuestion();
+    }
+    IEnumerator WaitForDialogBox()
+    {
+        yield return new WaitForSeconds(0.4f);
+        dialogBox.SetActive(false);
     }
 
     void Update()
@@ -70,10 +88,13 @@ public class Quizmaster : MonoBehaviour
         }
     }
 
-    IEnumerator WaitForDialogBox()
+    void GetRandomQuestion()
     {
-        yield return new WaitForSeconds(0.4f);
-        dialogBox.SetActive(false);
+        int randomQuestionIndex = Random.Range(0, unansweredQuestions.Count);
+        currentQuestion = unansweredQuestions[randomQuestionIndex];
+
+        unansweredQuestions.RemoveAt(randomQuestionIndex);
     }
+
 
 }
