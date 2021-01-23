@@ -32,7 +32,7 @@ public class TimerController : MonoBehaviour
     {
         maxTime = TimeSpan.FromMinutes(time);
         timeCounter.text = "Time 05:00.00";
-        timerGoing = false;
+        BeginTimer();
     }
 
     public void BeginTimer()
@@ -50,11 +50,17 @@ public class TimerController : MonoBehaviour
 
     private IEnumerator UpdateTimer()
     {
-        
         while (timerGoing)
         {
             elapsedTime += Time.deltaTime;
+            TimeSpan timeSpan = TimeSpan.FromSeconds(30);
             maxTime -= TimeSpan.FromSeconds(Time.deltaTime);
+            if (TimeSpan.Compare(maxTime, timeSpan) == -1)
+            {
+                timeCounter.text = "Time 05:00.00";
+                timeCounter.color = new Color(255, 0, 0, 100);
+            }
+
             string timePlayingStr = "Time: " + maxTime.ToString("mm':'ss'.'ff");
             timeCounter.text = timePlayingStr;
 
