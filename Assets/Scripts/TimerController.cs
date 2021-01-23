@@ -20,7 +20,7 @@ public class TimerController : MonoBehaviour
 
     public TimeSpan maxTime;
 
-    public int time;
+    public double time;
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class TimerController : MonoBehaviour
     void Start()
     {
         maxTime = TimeSpan.FromMinutes(time);
-        timeCounter.text = "Time 05:00.00";
+        timeCounter.text = "Time";
         BeginTimer();
     }
 
@@ -53,17 +53,21 @@ public class TimerController : MonoBehaviour
         while (timerGoing)
         {
             elapsedTime += Time.deltaTime;
-            TimeSpan timeSpan = TimeSpan.FromSeconds(30);
             maxTime -= TimeSpan.FromSeconds(Time.deltaTime);
-            if (TimeSpan.Compare(maxTime, timeSpan) == -1)
-            {
-                timeCounter.text = "Time 05:00.00";
-                timeCounter.color = new Color(255, 0, 0, 100);
-            }
-
             string timePlayingStr = "Time: " + maxTime.ToString("mm':'ss'.'ff");
             timeCounter.text = timePlayingStr;
 
+            if (TimeSpan.Compare(maxTime, TimeSpan.FromSeconds(30)) == -1)
+            {
+                timeCounter.color = new Color(255, 0, 0, 100);
+            }
+
+            if (TimeSpan.Compare(maxTime, TimeSpan.FromSeconds(0)) == 0 ||
+                TimeSpan.Compare(maxTime, TimeSpan.FromSeconds(0)) == -1)
+            {
+                Time.timeScale = 0;
+                timeCounter.text = "YOU LOST";
+            }
             yield return null;
         }
     }
