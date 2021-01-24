@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class Quizmaster : MonoBehaviour
+public class QuizmasterV2 : MonoBehaviour
 {
     private Health playerHealth;
     private int playerOnEnterHealth;
