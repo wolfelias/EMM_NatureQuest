@@ -6,6 +6,8 @@ using UnityEngine;
 public class Question
 {
     [TextArea(2, 7)]
-    public string fact;
+    public string question;
     public bool isTrue;
+
+    public string getQuestion { get { return question; } }
 }
