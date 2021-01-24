@@ -88,6 +88,7 @@ public class PlugScript : MonoBehaviour
         transform.SetParent(container);
         transform.localPosition = new Vector3(0, -0.5f, 0);
         rigidBody.isKinematic = true;
+        isPlugged = false;
     }
 
     private void Drop()

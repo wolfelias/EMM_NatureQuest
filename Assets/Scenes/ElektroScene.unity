@@ -8740,6 +8740,12 @@ PrefabInstance:
       propertyPath: Plugs.Array.data[6]
       value: 
       objectReference: {fileID: 51700302}
+    - target: {fileID: 72305725837107099, guid: 6e5ed0a9a4a144e52babaf0f6266c788,
+        type: 3}
+      propertyPath: floatingPoints
+      value: 
+      objectReference: {fileID: 8193164820568909076, guid: 692055cb1e0564db48db6df04c3ed539,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e5ed0a9a4a144e52babaf0f6266c788, type: 3}
 --- !u!1001 &1044992334565227280
