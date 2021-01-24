@@ -1,40 +1,55 @@
 fileFormatVersion: 2
-guid: f6b7423f8ba62a549acb86dc2d8c0790
+guid: baa8a638a0149f84ba890e36d37ebd55
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2091716346283041234
-    second: Bush1_Animated_0
+      213: -75210064195565137
+    second: flower2_0
   - first:
-      213: -1562358120500157557
-    second: Bush1_Animated_1
+      213: 4495189594397993443
+    second: flower2_1
   - first:
-      213: -8021916918411695499
-    second: Bush1_Animated_2
+      213: 2005604571738910185
+    second: flower2_2
   - first:
-      213: 938224561273243333
-    second: Bush1_Animated_3
+      213: -793081122982244171
+    second: flower2_3
   - first:
-      213: -2228894595851069355
-    second: Bush1_Animated_0
+      213: -8432787194934270305
+    second: flower2_4
   - first:
-      213: 8101770464299681043
-    second: Bush1_Animated_1
+      213: 3498732605409842943
+    second: flower2_5
   - first:
-      213: -4675636756512149753
-    second: Bush1_Animated_2
+      213: -5010794519316831327
+    second: flower2_6
   - first:
-      213: -7266040291365488318
-    second: Bush1_Animated_3
+      213: -8683767580425184695
+    second: flower2_7
   - first:
-      213: 2888897503697746348
-    second: Bush1_Animated_4
+      213: 7696215390655849829
+    second: flower2_0
   - first:
-      213: -739493697681462793
-    second: Bush1_Animated_5
+      213: 6397568845870048017
+    second: flower2_1
   - first:
-      213: 3762114435291073105
-    second: Bush1_Animated_6
+      213: 4920356197518814397
+    second: flower2_2
+  - first:
+      213: -8757586051028390348
+    second: flower2_3
+  - first:
+      213: -913621081029693199
+    second: flower2_4
+  - first:
+      213: -7461020978011118782
+    second: flower2_5
+  - first:
+      213: -8286547573103960006
+    second: flower2_6
+  - first:
+      213: 1414106225735186397
+    second: flower2_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -132,85 +147,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bush1_Animated_0
+      name: flower2_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 4
-        width: 47
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 60
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 558528c9c206111e0800000000000000
-      internalID: -2228894595851069355
+      spriteID: 565afea1f137eca60800000000000000
+      internalID: 7696215390655849829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bush1_Animated_1
+      name: flower2_1
       rect:
         serializedVersion: 2
-        x: 57
-        y: 4
-        width: 49
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 60
+        y: 60
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3158550ff454f6070800000000000000
-      internalID: 8101770464299681043
+      spriteID: 113a03438fab8c850800000000000000
+      internalID: 6397568845870048017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bush1_Animated_2
+      name: flower2_2
       rect:
         serializedVersion: 2
-        x: 113
-        y: 4
-        width: 50
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 120
+        y: 60
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70f655d742dcc1fb0800000000000000
-      internalID: -4675636756512149753
+      spriteID: dbc208974ed984440800000000000000
+      internalID: 4920356197518814397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bush1_Animated_3
+      name: flower2_3
       rect:
         serializedVersion: 2
-        x: 167
-        y: 4
-        width: 49
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 180
+        y: 60
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 249fb752ad6d92b90800000000000000
-      internalID: -7266040291365488318
+      spriteID: 43e6982e2edc67680800000000000000
+      internalID: -8757586051028390348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower2_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0bae5a77a2253f0800000000000000
+      internalID: -913621081029693199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower2_5
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 243e8ef53f0257890800000000000000
+      internalID: -7461020978011118782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower2_6
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3063c2e2e4400d80800000000000000
+      internalID: -8286547573103960006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower2_7
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd73d9bbe1aef9310800000000000000
+      internalID: 1414106225735186397
       vertices: []
       indices: 
       edges: []

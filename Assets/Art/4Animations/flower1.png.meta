@@ -1,40 +1,31 @@
 fileFormatVersion: 2
-guid: f6b7423f8ba62a549acb86dc2d8c0790
+guid: 6a303cfad9d30a64d9c4ba06b4be3af4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2091716346283041234
-    second: Bush1_Animated_0
+      213: -8658850166083280144
+    second: flower1_0
   - first:
-      213: -1562358120500157557
-    second: Bush1_Animated_1
+      213: -8111767920985596548
+    second: flower1_1
   - first:
-      213: -8021916918411695499
-    second: Bush1_Animated_2
+      213: -5908571046907583340
+    second: flower1_2
   - first:
-      213: 938224561273243333
-    second: Bush1_Animated_3
+      213: 4872259483966902238
+    second: flower1_3
   - first:
-      213: -2228894595851069355
-    second: Bush1_Animated_0
+      213: 1221208023267091644
+    second: flower1_4
   - first:
-      213: 8101770464299681043
-    second: Bush1_Animated_1
+      213: -1110946815586877481
+    second: flower1_5
   - first:
-      213: -4675636756512149753
-    second: Bush1_Animated_2
+      213: -6209650075762185757
+    second: flower1_6
   - first:
-      213: -7266040291365488318
-    second: Bush1_Animated_3
-  - first:
-      213: 2888897503697746348
-    second: Bush1_Animated_4
-  - first:
-      213: -739493697681462793
-    second: Bush1_Animated_5
-  - first:
-      213: 3762114435291073105
-    second: Bush1_Animated_6
+      213: 8537216593426988235
+    second: flower1_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -132,85 +123,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bush1_Animated_0
+      name: flower1_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 4
-        width: 47
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 70
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 558528c9c206111e0800000000000000
-      internalID: -2228894595851069355
+      spriteID: 0f2264786a595d780800000000000000
+      internalID: -8658850166083280144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bush1_Animated_1
+      name: flower1_1
       rect:
         serializedVersion: 2
-        x: 57
-        y: 4
-        width: 49
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 70
+        y: 70
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3158550ff454f6070800000000000000
-      internalID: 8101770464299681043
+      spriteID: c7d9e39cd063d6f80800000000000000
+      internalID: -8111767920985596548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bush1_Animated_2
+      name: flower1_2
       rect:
         serializedVersion: 2
-        x: 113
-        y: 4
-        width: 50
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 140
+        y: 70
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70f655d742dcc1fb0800000000000000
-      internalID: -4675636756512149753
+      spriteID: 4946ae210f9800ea0800000000000000
+      internalID: -5908571046907583340
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bush1_Animated_3
+      name: flower1_3
       rect:
         serializedVersion: 2
-        x: 167
-        y: 4
-        width: 49
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 210
+        y: 70
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 249fb752ad6d92b90800000000000000
-      internalID: -7266040291365488318
+      spriteID: edf0063bf2ebd9340800000000000000
+      internalID: 4872259483966902238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower1_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb421b71a3a92f010800000000000000
+      internalID: 1221208023267091644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower1_5
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 0
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dfb79cd1cf1590f0800000000000000
+      internalID: -1110946815586877481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower1_6
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e9a7bef724e2d9a0800000000000000
+      internalID: -6209650075762185757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flower1_7
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcc39c572494a7670800000000000000
+      internalID: 8537216593426988235
       vertices: []
       indices: 
       edges: []
