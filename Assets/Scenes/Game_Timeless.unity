@@ -559,7 +559,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Welcome to the Waste Game! \n\nFacing the waste topoic"
+  m_Text: 
 --- !u!222 &154909921
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1331,6 +1331,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87700ead8ab304388b5d832fca636100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1015468123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6468125110362858053, guid: 51d0a9723e9f07d419f848daf1836e9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1944073294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1015468129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015468123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccfb4f3bd1ab4de88209f7c18cbac32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: 7a2312dd9fe24eb47adbc96e3503ef8e, type: 2}
+  animator: {fileID: 1571004532}
+  dialogBox: {fileID: 1571004530}
+  dialogText: {fileID: 154909920}
+  dialog: 
 --- !u!224 &1017481856 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5888855870529403819, guid: 3f9079a43d2bf974ab90abfc795be767,
@@ -2463,7 +2486,12 @@ PrefabInstance:
         type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 298947586}
+      objectReference: {fileID: 1571004532}
+    - target: {fileID: 6468125110362858048, guid: 51d0a9723e9f07d419f848daf1836e9e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6468125110362858049, guid: 51d0a9723e9f07d419f848daf1836e9e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2542,7 +2570,7 @@ PrefabInstance:
     - target: {fileID: 6468125110362858053, guid: 51d0a9723e9f07d419f848daf1836e9e,
         type: 3}
       propertyPath: m_Name
-      value: Quizmaster
+      value: SignManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51d0a9723e9f07d419f848daf1836e9e, type: 3}
