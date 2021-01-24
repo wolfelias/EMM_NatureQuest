@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour
 {
+    public MinigamesManager minigamesManager;
     public Button chillButton;
     public Button survivalButton;
     public GameObject survivalText;
@@ -41,10 +42,12 @@ public class StartMenu : MonoBehaviour
     public void PlayTimeless()
     {
         SceneManager.LoadScene("Game_Timeless");
+        minigamesManager.isChill = true;
     }
     public void PlaySurvival()
     {
         SceneManager.LoadScene("Game_Survival");
+        minigamesManager.isChill = false;
     }
     public void QuitGame()
     {

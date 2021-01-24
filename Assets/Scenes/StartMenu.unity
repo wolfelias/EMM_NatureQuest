@@ -1483,6 +1483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83ccc0156d150a4c83de9655ffdd274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minigamesManager: {fileID: 4821340578491864414, guid: 7e6769a35386d4f4f903c638fb48d1a7,
+    type: 3}
   chillButton: {fileID: 510609372}
   survivalButton: {fileID: 455013852}
   survivalText: {fileID: 121471786}

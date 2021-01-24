@@ -19,6 +19,8 @@ public class WaterPipeManager : MonoBehaviour
     private GameObject Temp;
     private int selection;
 
+    public MinigamesManager minigamesManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +54,9 @@ public class WaterPipeManager : MonoBehaviour
     {
         while (true)
         {
-            if (isCompleted)
+            if (isCompleted && minigamesManager.isChill)
             {
+                Debug.Log(minigamesManager.isChill);
                 selection++;
                 if (selection == PipeSet.Length)
                     selection = 0;

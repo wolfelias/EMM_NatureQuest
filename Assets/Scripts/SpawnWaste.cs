@@ -20,6 +20,8 @@ public class SpawnWaste : MonoBehaviour
     private float spawnPosX, spawnPosY;
 
     public int timeTilNext = 30;
+    public MinigamesManager minigamesManager;
+    private int spawnLimit, totalSpawned;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,13 @@ public class SpawnWaste : MonoBehaviour
         spawnPosX = Random.Range(28.0f, 60.0f);
         spawnPosY = Random.Range(-8.0f, -44.0f);
 
+        // Set the number of spawn limit based on game mode
+        if (minigamesManager.isChill)
+            spawnLimit = 100;
+        else
+            spawnLimit = 20;
+        totalSpawned = 0;
+
         // Start the coroutine
         StartCoroutine(Spawn());
     }
@@ -52,7 +61,7 @@ public class SpawnWaste : MonoBehaviour
     // Spawn waste for each 30 seconds
     private IEnumerator Spawn()
     {
-        while(true)
+        while(totalSpawned < spawnLimit)
         {
             // Update random spawn position
             spawnPosX = Random.Range(28.0f, 60.0f);
@@ -143,6 +152,7 @@ public class SpawnWaste : MonoBehaviour
                         break;
                 }
                 count++;
+                totalSpawned++;
             }
             yield return new WaitForSeconds(timeTilNext);
         }

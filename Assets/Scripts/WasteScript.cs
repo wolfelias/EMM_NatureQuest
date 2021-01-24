@@ -75,32 +75,32 @@ public class WasteScript : MonoBehaviour
         if (distanceToRecycleBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("RecyclableMaterial")) playerHealth.IncreaseHealth(5);
-            else playerHealth.DecreaseHealth(5);
+            if (CompareTag("RecyclableMaterial")) playerHealth.IncreaseHealth(2);
+            else playerHealth.DecreaseHealth(2);
         }
         else if (distanceToPaperBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("Paper")) playerHealth.IncreaseHealth(5);
-            else playerHealth.DecreaseHealth(5);
+            if (CompareTag("Paper")) playerHealth.IncreaseHealth(2);
+            else playerHealth.DecreaseHealth(2);
         }
         else if (distanceToOrganicBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("OrganicWaste")) playerHealth.IncreaseHealth(5);
-            else playerHealth.DecreaseHealth(5);
+            if (CompareTag("OrganicWaste")) playerHealth.IncreaseHealth(2);
+            else playerHealth.DecreaseHealth(2);
         }
         else if (distanceToHouseholdBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("HouseholdWaste")) playerHealth.IncreaseHealth(5);
-            else playerHealth.DecreaseHealth(5);
+            if (CompareTag("HouseholdWaste")) playerHealth.IncreaseHealth(2);
+            else playerHealth.DecreaseHealth(2);
         }
         else if (distanceToGlassBin.magnitude <= dropRange)
         {
             Destroy(gameObject);
-            if (CompareTag("GlassWaste")) playerHealth.IncreaseHealth(5);
-            else playerHealth.DecreaseHealth(5);
+            if (CompareTag("GlassWaste")) playerHealth.IncreaseHealth(2);
+            else playerHealth.DecreaseHealth(2);
         }
 
         Detach();

@@ -382,8 +382,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 337501083}
-  - {fileID: 769549284}
+  - {fileID: 695743964}
+  - {fileID: 5324830048973573948}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -584,12 +584,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &337501083 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5324830048765254922, guid: 1209fd8537f9dbb49aa5875f797ebb35,
-    type: 3}
-  m_PrefabInstance: {fileID: 5324830048973573947}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &375359259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7482590241120517002, guid: 873877448203cd84daa3ff64f9462a9f,
@@ -847,6 +841,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1209fd8537f9dbb49aa5875f797ebb35, type: 3}
+--- !u!4 &695743964 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 695743963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &718469060
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,12 +912,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &769549284 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5324830048765254922, guid: 1209fd8537f9dbb49aa5875f797ebb35,
-    type: 3}
-  m_PrefabInstance: {fileID: 695743963}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &834331441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1356,6 +1349,8 @@ MonoBehaviour:
   totalPipes: 0
   correctedPipes: 0
   isCompleted: 0
+  minigamesManager: {fileID: 4821340578491864414, guid: 7e6769a35386d4f4f903c638fb48d1a7,
+    type: 3}
 --- !u!4 &1586733723
 Transform:
   m_ObjectHideFlags: 0
@@ -1587,8 +1582,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: e8bf750876dc9a641a8fdaf21269b829, type: 3}
 --- !u!4 &1771350183 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6052745676455388839, guid: e8bf750876dc9a641a8fdaf21269b829,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1771350182}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1813061413 stripped
@@ -5635,6 +5629,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1209fd8537f9dbb49aa5875f797ebb35, type: 3}
+--- !u!4 &5324830048973573948 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 5324830048973573947}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5745256841393726014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6979,6 +6978,12 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 6561614166181674134}
+    - target: {fileID: 7482590241120517001, guid: 873877448203cd84daa3ff64f9462a9f,
+        type: 3}
+      propertyPath: minigamesManager
+      value: 
+      objectReference: {fileID: 4821340578491864414, guid: 7e6769a35386d4f4f903c638fb48d1a7,
+        type: 3}
     - target: {fileID: 7482590241120517002, guid: 873877448203cd84daa3ff64f9462a9f,
         type: 3}
       propertyPath: m_LocalPosition.x
