@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class SignManager : MonoBehaviour
 {
     public Signal signal;
-    public Animator animator;
     public GameObject dialogBox;
     public Text dialogText;
     public string dialog;
@@ -21,7 +20,6 @@ public class SignManager : MonoBehaviour
     private void Start()
     {
         dialogBox.SetActive(false);
-        animator.SetBool("IsOpen", false);
         // dialogBox.SetActive(true);
         // animator.SetBool("IsOpen", true);
     }
@@ -34,14 +32,12 @@ public class SignManager : MonoBehaviour
         {
             if (dialogBox.activeInHierarchy)
             {
-                animator.SetBool("IsOpen", false);
 
                 StartCoroutine(WaitForDialogBox());
             }
             else
             {
                 dialogBox.SetActive(true);
-                animator.SetBool("IsOpen", true);
                 if (uiText != null)
                 {
                     timer -= Time.deltaTime;
@@ -74,7 +70,6 @@ public class SignManager : MonoBehaviour
         {
             signal.Raise();
             playerInRange = false;
-            animator.SetBool("IsOpen", false);
 
             /*
             while (animator.IsInTransition(animator.GetLayerIndex("Base Layer")))

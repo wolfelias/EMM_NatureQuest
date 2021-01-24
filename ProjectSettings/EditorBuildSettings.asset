@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 27555f7fc3dbeba45b619f608db51c86
   - enabled: 1
-    path: Assets/Scenes/Game_Timeless.unity
+    path: Assets/Scenes/Game_Timeless_development.unity
     guid: fe248bede9e18154bb7e92e436aa2e36
   - enabled: 1
     path: Assets/Scenes/Game_Survival.unity
