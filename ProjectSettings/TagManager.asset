@@ -9,6 +9,10 @@ TagManager:
   - HouseholdWaste
   - GlassWaste
   - RecyclableMaterial
+  - PipeSet
+  - Outlet
+  - SolarOutlet
+  - LanternArea
   layers:
   - Default
   - TransparentFX

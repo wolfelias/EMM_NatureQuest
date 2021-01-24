@@ -23,7 +23,7 @@ public class WasteScript : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player").transform;
-        wasteContainer = GameObject.Find("WasteContainer").transform;
+        wasteContainer = GameObject.Find("Container").transform;
         recycleBin = GameObject.Find("RecycleBin").transform;
         paperBin = GameObject.Find("PaperBin").transform;
         organicBin = GameObject.Find("OrganicBin").transform;

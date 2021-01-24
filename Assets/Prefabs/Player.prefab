@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3431504003145827340}
   m_Layer: 0
-  m_Name: WasteContainer
+  m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,3 +338,4 @@ MonoBehaviour:
   minHealth: 0
   maxHealth: 100
   healthBar: {fileID: 0}
+  floatingPoints: {fileID: 0}
