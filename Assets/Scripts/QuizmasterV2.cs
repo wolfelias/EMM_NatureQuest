@@ -12,6 +12,7 @@ public class QuizmasterV2 : MonoBehaviour
     public Animator animator;
     public GameObject dialogBox;
     public Text dialogText;
+    private bool lastText = true;
     private bool playerInRange;
     private string openingText = "Hello Adventurer! I am the Quizmaster";
 
@@ -59,14 +60,12 @@ public class QuizmasterV2 : MonoBehaviour
         // activates the first time the player talks to the Quizmaster --> starts dialog
         if (Input.GetKeyDown(KeyCode.E) && playerInRange && countPressE == 0)
         {
-            Debug.Log("First Text");
             dialogBox.SetActive(true);
             //dialogText.text = openingText;
             StopAllCoroutines();
             StartCoroutine(TypeText(openingText));
             animator.SetBool("IsOpen", true);
             countPressE++;
-            Debug.Log("Update DownPart " + countPressE);
         }
         // every time the player talks to the quizmaster, after game started
         if (Input.GetKeyDown(KeyCode.E) && playerInRange && countPressE > 1 && !isInGame)
@@ -78,11 +77,20 @@ public class QuizmasterV2 : MonoBehaviour
                 gameFinished = true;
                 isInGame = false;
                 //dialogText.text = openingText;
-                StopAllCoroutines();
-                StartCoroutine(TypeText(openingText));
-            } else
+                if (lastText)
+                {
+                    lastText = false;
+                    StopAllCoroutines();
+                    StartCoroutine(TypeText(openingText));
+                }
+                else
+                {
+                    dialogText.text = openingText;
+                }
+            }
+            else
             {
-            isInGame = true;
+                isInGame = true;
                 //dialogText.text = currentQuestion.question;
                 StopAllCoroutines();
                 StartCoroutine(TypeText(currentQuestion.question));
@@ -221,7 +229,7 @@ public class QuizmasterV2 : MonoBehaviour
         {
             //dialogText.text = "Yeaaaah! This was correct.";
             StopAllCoroutines();
-            StartCoroutine(TypeText("Yeaaaah! This was correct."));
+            StartCoroutine(TypeText(currentQuestion.answerRight));
             playerHealth.IncreaseHealth(rewardHealthPoints);
             isInGame = false;
         }
@@ -229,20 +237,20 @@ public class QuizmasterV2 : MonoBehaviour
         {
             //dialogText.text = "Sorry, but that answer wasn't correct.";
             StopAllCoroutines();
-            StartCoroutine(TypeText("Sorry, but that answer wasn't correct."));
+            StartCoroutine(TypeText(currentQuestion.answerWrong));
             playerHealth.DecreaseHealth(rewardHealthPoints);
             isInGame = false;
         }
         if (answeredQuestions < questionsToAnswer)
         {
-        GetRandomQuestion();
+            GetRandomQuestion();
         }
     }
 
     IEnumerator TypeText(string text)
     {
         dialogText.text = "";
-        foreach(char letter in text.ToCharArray())
+        foreach (char letter in text.ToCharArray())
         {
             dialogText.text += letter;
             yield return null;
@@ -257,6 +265,6 @@ public class QuizmasterV2 : MonoBehaviour
             dialogText.text = "";
         }
         countPressE = 0;
-        dialogBox.SetActive(false);        
+        dialogBox.SetActive(false);
     }
 }
