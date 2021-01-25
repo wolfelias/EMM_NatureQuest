@@ -18,6 +18,7 @@ public class WaterPipeManager : MonoBehaviour
     private GameObject PipesHolder;
     private GameObject Temp;
     private int selection;
+    private int tempHealth;
 
     public MinigamesManager minigamesManager;
 
@@ -44,6 +45,7 @@ public class WaterPipeManager : MonoBehaviour
             if (isEntered && !isCompleted)
             {
                 playerHealth.DecreaseHealth(1);
+                tempHealth += 1;
             }
             yield return new WaitForSeconds(2);
         }
@@ -91,7 +93,7 @@ public class WaterPipeManager : MonoBehaviour
         if (correctedPipes == totalPipes)
         {
             isCompleted = true;
-            playerHealth.IncreaseHealth(10);
+            playerHealth.IncreaseHealth(10 + tempHealth);
         }
     }
 
@@ -119,5 +121,6 @@ public class WaterPipeManager : MonoBehaviour
     {
         correctedPipes = 0;
         isCompleted = false;
+        tempHealth = 0;
     }
 }
