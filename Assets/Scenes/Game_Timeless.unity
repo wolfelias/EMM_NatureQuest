@@ -307,27 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
-  m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_CameraCutEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_CameraActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &13105639 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7083157566789604720, guid: 4239742668c7e9e488e7c416dc8fa63b,
@@ -681,7 +660,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Welcome to the Waste Game! \n\nFacing the waste topoic"
+  m_Text: "Welcome to the Waste Game! \n\nFacing the waste topic"
 --- !u!222 &154909921
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -974,29 +953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  m_LockStageInInspector: 
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 6561614166181674134}
-  m_Lens:
-    FieldOfView: 110
-    OrthographicSize: 10
-    NearClipPlane: 0.1
-    FarClipPlane: 5000
-    Dutch: 0
-    LensShift: {x: 0, y: 0}
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 376215157}
 --- !u!4 &205268263
 Transform:
   m_ObjectHideFlags: 0
@@ -1513,7 +1469,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.18654326, g: 0.22699824, b: 0.3018868, a: 1}
     m_HighlightedColor: {r: 0.26205945, g: 0.3526469, b: 0.3679245, a: 1}
     m_PressedColor: {r: 0.44246173, g: 0.5754717, b: 0.45439586, a: 1}
-    m_SelectedColor: {r: 0.18823531, g: 0.227451, b: 0.3019608, a: 1}
+    m_SelectedColor: {r: 0.2627451, g: 0.3529412, b: 0.36862746, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2152,35 +2108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 10
-  m_LookaheadIgnoreY: 0
-  m_XDamping: 0.5
-  m_YDamping: 0.5
-  m_ZDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_CameraDistance: 10
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_DeadZoneDepth: 0
-  m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
-  m_GroupFramingMode: 2
-  m_AdjustmentMode: 2
-  m_GroupFramingSize: 0.8
-  m_MaxDollyIn: 5000
-  m_MaxDollyOut: 5000
-  m_MinimumDistance: 1
-  m_MaximumDistance: 5000
-  m_MinimumFOV: 3
-  m_MaximumFOV: 60
-  m_MinimumOrthoSize: 1
-  m_MaximumOrthoSize: 5000
 --- !u!114 &376215159
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -5157,7 +5084,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.18654326, g: 0.22699824, b: 0.3018868, a: 1}
     m_HighlightedColor: {r: 0.26205945, g: 0.3526469, b: 0.3679245, a: 1}
     m_PressedColor: {r: 0.44246173, g: 0.5754717, b: 0.45439586, a: 1}
-    m_SelectedColor: {r: 0.18823531, g: 0.227451, b: 0.3019608, a: 1}
+    m_SelectedColor: {r: 0.2627451, g: 0.3529412, b: 0.36862746, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -15841,6 +15768,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoSign_WasteGame
       objectReference: {fileID: 0}
+    - target: {fileID: 2532362951492903010, guid: cb58769c8962d4dbf8d38f1749253bf9,
+        type: 3}
+      propertyPath: m_Text
+      value: "WASTE SORTING\n\nDo you know in which trash can you ought to put a
+        broken mirror? Or maybe the rest of an apple? You are about to find out!
+        Collect the waste one by one and put it in the correct trash can. To separate
+        waste is an easy thing to do. Not only will the garbage collection people
+        thank you, but nature too. By separating waste for example glass and paper
+        can be recycled. \n\nPress E to close"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb58769c8962d4dbf8d38f1749253bf9, type: 3}
 --- !u!1001 &3058351011817660766
@@ -15850,6 +15787,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3058351011474319977, guid: 8d57a25948e5a461aafd5b66ed2369f6,
+        type: 3}
+      propertyPath: m_Text
+      value: 'WATER PIPES
+
+        Can you find the correct way to connect all the
+        water pipes? It might look tricky, but I bet you can do it! Saving water
+        is very important. Without water you will not be able to take a shower, prepare
+        your coffee or tea in the morning and most important without it we cannot
+        grow crops.
+
+
+        Press E to close'
+      objectReference: {fileID: 0}
     - target: {fileID: 3058351012948515238, guid: 8d57a25948e5a461aafd5b66ed2369f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20330,7 +20281,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.18654326, g: 0.22699824, b: 0.3018868, a: 1}
     m_HighlightedColor: {r: 0.26205945, g: 0.3526469, b: 0.3679245, a: 1}
     m_PressedColor: {r: 0.44246173, g: 0.5754717, b: 0.45439586, a: 1}
-    m_SelectedColor: {r: 0.18823531, g: 0.227451, b: 0.3019608, a: 1}
+    m_SelectedColor: {r: 0.2627451, g: 0.3529412, b: 0.36862746, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -20411,7 +20362,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.18654326, g: 0.22699824, b: 0.3018868, a: 1}
     m_HighlightedColor: {r: 0.26205945, g: 0.3526469, b: 0.3679245, a: 1}
     m_PressedColor: {r: 0.44246173, g: 0.5754717, b: 0.45439586, a: 1}
-    m_SelectedColor: {r: 0.18823531, g: 0.227451, b: 0.3019608, a: 1}
+    m_SelectedColor: {r: 0.2627451, g: 0.3529412, b: 0.36862746, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -20726,6 +20677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 6007853409883572883}
+  pauseFirstButton: {fileID: 6007853408848158730}
 --- !u!224 &6007853409255228185
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21182,7 +21134,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.18654326, g: 0.22699824, b: 0.3018868, a: 1}
     m_HighlightedColor: {r: 0.26205945, g: 0.3526469, b: 0.3679245, a: 1}
     m_PressedColor: {r: 0.44246173, g: 0.5754717, b: 0.45439586, a: 1}
-    m_SelectedColor: {r: 0.18823531, g: 0.227451, b: 0.3019608, a: 1}
+    m_SelectedColor: {r: 0.2627451, g: 0.3529412, b: 0.36862746, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
