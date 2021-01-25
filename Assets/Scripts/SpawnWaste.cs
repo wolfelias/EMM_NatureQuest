@@ -169,7 +169,7 @@ public class SpawnWaste : MonoBehaviour
                     wasteScript = wasteList[i].gameObject.GetComponent<WasteScript>();
                     if(wasteScript.equipped)
                     {
-                        wasteScript.Detach();
+                        wasteScript.PutBack();
                     }
                 }
             }

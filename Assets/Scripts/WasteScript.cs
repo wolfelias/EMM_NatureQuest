@@ -11,6 +11,7 @@ public class WasteScript : MonoBehaviour
     public float pickUpRange;
     public bool equipped;
     public static bool slotFull;
+    private Vector3 tempPosition;
 
     public float dropRange;
     private Transform recycleBin, paperBin, organicBin,
@@ -51,6 +52,7 @@ public class WasteScript : MonoBehaviour
     {
         equipped = true;
         slotFull = true;
+        tempPosition = transform.position;
 
         // Make waste a child of the camera and move it to default position
         transform.SetParent(wasteContainer);
@@ -126,5 +128,11 @@ public class WasteScript : MonoBehaviour
         equipped = false;
         slotFull = false;
         spawnWaste.MinusCount();
+    }
+
+    public void PutBack()
+    {
+        Detach();
+        transform.localPosition = tempPosition;
     }
 }
