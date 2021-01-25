@@ -10,22 +10,40 @@ public class PauseMenu : MonoBehaviour
     public static bool IsPaused = false;
     public GameObject pauseMenu;
     public GameObject pauseFirstButton;
+    private static TimerController timerController;
+    private static HealthbarNotifier healthbarNotifier;
 
     private void Start()
     {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
         IsPaused = false;
+
+        if (SceneManager.GetActiveScene().name.Equals("Game_Survival"))
+        {
+            GameObject Timer = GameObject.Find("TimeCanvas");
+            timerController = Timer.GetComponent<TimerController>(); 
+        }
+       
+        GameObject Healthbar = GameObject.Find("Health Bar");
+        healthbarNotifier = Healthbar.GetComponent<HealthbarNotifier>();
+        Debug.Log(healthbarNotifier.isOver);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        bool temp = true;
+        if (SceneManager.GetActiveScene().name.Equals("Game_Survival"))
         {
-            if(IsPaused)
+            temp = timerController.isOver;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && !temp && !healthbarNotifier.isOver)
+        {
+            if (IsPaused)
             {
                 Resume();
-            } else
+            }
+            else
             {
                 Pause();
             }
@@ -41,7 +59,7 @@ public class PauseMenu : MonoBehaviour
         IsPaused = true;
     }
 
-    public void Resume()    
+    public void Resume()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;

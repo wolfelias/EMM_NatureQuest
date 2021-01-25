@@ -29,7 +29,8 @@ public class TimerController : MonoBehaviour
 
     public GameObject mainMenuButton;
 
-    private bool isOver = false;
+    public bool isOver = false;
+
 
 
     private void Awake()

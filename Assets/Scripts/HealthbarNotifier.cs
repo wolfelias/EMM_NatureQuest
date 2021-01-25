@@ -12,6 +12,7 @@ public class HealthbarNotifier : MonoBehaviour
     public GameObject restartButton;
     public GameObject mainMenuButton;
     private bool isGameEnded;
+    public bool isOver = false;
 
     // Update is called once per frame
     private void Start()
@@ -28,6 +29,7 @@ public class HealthbarNotifier : MonoBehaviour
         {
             if (playerHealth.curHealth <= 0)
             {
+                
                 Time.timeScale = 0;
                 lostPanel.SetActive(true);
                 restartButton.SetActive(true);
@@ -35,6 +37,7 @@ public class HealthbarNotifier : MonoBehaviour
                 isGameEnded = true;
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(restartButton);
+                isOver = true;
             }
             else if (playerHealth.curHealth >= 100)
             {
@@ -45,6 +48,7 @@ public class HealthbarNotifier : MonoBehaviour
                 isGameEnded = true;
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(restartButton);
+                isOver = true;
             }
         }
     }

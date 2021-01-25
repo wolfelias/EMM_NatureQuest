@@ -3316,6 +3316,7 @@ MonoBehaviour:
   wonPanel: {fileID: 1574359353}
   restartButton: {fileID: 1248827205}
   mainMenuButton: {fileID: 269191117}
+  isOver: 0
 --- !u!4 &1227120840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6443353508438927002, guid: 8ac0a04812ff04835a58329902d43d6a,
@@ -11458,7 +11459,7 @@ PrefabInstance:
     - target: {fileID: 5817893012125501154, guid: 3b624cdffcef44b5d97ea591688011df,
         type: 3}
       propertyPath: time
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5817893012125501154, guid: 3b624cdffcef44b5d97ea591688011df,
         type: 3}
@@ -11470,6 +11471,16 @@ PrefabInstance:
       propertyPath: lostPanel
       value: 
       objectReference: {fileID: 764020164}
+    - target: {fileID: 5817893012125501154, guid: 3b624cdffcef44b5d97ea591688011df,
+        type: 3}
+      propertyPath: restartButton
+      value: 
+      objectReference: {fileID: 1248827205}
+    - target: {fileID: 5817893012125501154, guid: 3b624cdffcef44b5d97ea591688011df,
+        type: 3}
+      propertyPath: mainMenuButton
+      value: 
+      objectReference: {fileID: 269191117}
     - target: {fileID: 5817893012125501155, guid: 3b624cdffcef44b5d97ea591688011df,
         type: 3}
       propertyPath: m_Name
@@ -19273,6 +19284,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4821340578491864414, guid: 7e6769a35386d4f4f903c638fb48d1a7,
         type: 3}
+    - target: {fileID: 7482590241120517001, guid: 873877448203cd84daa3ff64f9462a9f,
+        type: 3}
+      propertyPath: timeTilNext
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7482590241120517002, guid: 873877448203cd84daa3ff64f9462a9f,
         type: 3}
       propertyPath: m_LocalPosition.x
