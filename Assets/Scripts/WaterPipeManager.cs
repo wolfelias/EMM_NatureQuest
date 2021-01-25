@@ -22,10 +22,12 @@ public class WaterPipeManager : MonoBehaviour
 
     public MinigamesManager minigamesManager;
 
+    AudioSource audio;
 
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         // Get the health of the player
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         selection = Random.Range(0, 4);
@@ -44,6 +46,7 @@ public class WaterPipeManager : MonoBehaviour
         {
             if (isEntered && !isCompleted)
             {
+                audio.Play();
                 playerHealth.DecreaseHealth(1);
                 tempHealth += 1;
             }
