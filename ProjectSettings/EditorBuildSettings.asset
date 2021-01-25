@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game_Timeless.unity
     guid: 2848e18077ad78e4995f4b2fc88ac28f
+  - enabled: 0
+    path: Assets/Scenes/OLD/Game_Survivalbackup.unity
+    guid: 8ded52c659c29415697b447f3cb6985f
   - enabled: 1
     path: Assets/Scenes/Game_Survival.unity
-    guid: 8ded52c659c29415697b447f3cb6985f
+    guid: 3dca67dc82f304316a6e0cea9ea4ecb4
   m_configObjects: {}
