@@ -3140,6 +3140,7 @@ MonoBehaviour:
   wonPanel: {fileID: 1574359353}
   restartButton: {fileID: 1248827205}
   mainMenuButton: {fileID: 269191117}
+  isOver: 0
 --- !u!4 &1227120840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6443353508438927002, guid: 8ac0a04812ff04835a58329902d43d6a,
@@ -18438,8 +18439,7 @@ PrefabInstance:
         type: 3}
       propertyPath: plugScript
       value: 
-      objectReference: {fileID: 1542128993488022258, guid: 7e4912031055d4e2eb760201b71fd389,
-        type: 3}
+      objectReference: {fileID: 1954831695}
     - target: {fileID: 268809655044514811, guid: 87966380155c5445d8b74ba5033d6c36,
         type: 3}
       propertyPath: lanternOff
@@ -18524,7 +18524,7 @@ PrefabInstance:
     - target: {fileID: 5381708385339076599, guid: 88b111a55d06043159c4fa1ec07bdcd6,
         type: 3}
       propertyPath: m_Name
-      value: plug (4)
+      value: plug 7
       objectReference: {fileID: 0}
     - target: {fileID: 5381708385339076601, guid: 88b111a55d06043159c4fa1ec07bdcd6,
         type: 3}
