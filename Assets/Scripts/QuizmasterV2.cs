@@ -14,7 +14,7 @@ public class QuizmasterV2 : MonoBehaviour
     public Text dialogText;
     private bool lastText = true;
     private bool playerInRange;
-    private string openingText = "Hello Adventurer! I am the Quizmaster";
+    private string openingText;
 
     // questions must be >= questionsToAnswer!!!
     public Question[] questions;
@@ -31,6 +31,7 @@ public class QuizmasterV2 : MonoBehaviour
 
     private void Start()
     {
+        openingText = "Hello Adventurer! I am the Quizmaster. \n I will ask you "+ questionsToAnswer + " Questions. Alright. Are you ready?";
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
 
         dialogBox.SetActive(false);
