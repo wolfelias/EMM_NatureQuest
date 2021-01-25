@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Health : MonoBehaviour
 {
@@ -47,4 +48,9 @@ public class Health : MonoBehaviour
     }
 
     public int CurHealth { get { return curHealth; } }
+
+    internal void SetHealth(int v)
+    {
+        curHealth = v;
+    }
 }
