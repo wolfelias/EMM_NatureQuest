@@ -23,8 +23,11 @@ public class WasteScript : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player").transform;
+        // Get the player transform
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         wasteContainer = GameObject.Find("Container").transform;
+
+        // Get each bin transform
         recycleBin = GameObject.Find("RecycleBin").transform;
         paperBin = GameObject.Find("PaperBin").transform;
         organicBin = GameObject.Find("OrganicBin").transform;
@@ -38,7 +41,7 @@ public class WasteScript : MonoBehaviour
 
     private void Update()
     {
-        // Check if player is in range and "E" is pressed
+        // Check if player is in range, "E" is pressed, and if player is in the trigger area
         Vector2 distanceToPlayer = player.position - transform.position;
         if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull && Physics2D.OverlapCircle(player.transform.position, 0.2f, triggerLayer) != null)
             PickUp();
@@ -48,6 +51,8 @@ public class WasteScript : MonoBehaviour
             Drop();
     }
 
+    // Pick up the nearest waste by setting the waste parent to the container
+    // Set equipped and slotFull to true, so player can't pick up another waste
     private void PickUp()
     {
         equipped = true;
@@ -64,6 +69,7 @@ public class WasteScript : MonoBehaviour
         boxCollider.isTrigger = true;
     }
 
+    // Drop waste when "Q" is pressed
     private void Drop()
     {
         Vector2 distanceToRecycleBin = recycleBin.position - transform.position;
@@ -110,7 +116,7 @@ public class WasteScript : MonoBehaviour
 
     public void Detach()
     {
-        // Unequipped waste if trigger area leaved
+        // Unequipped waste is dropped
         equipped = false;
         slotFull = false;
 
@@ -130,6 +136,8 @@ public class WasteScript : MonoBehaviour
         spawnWaste.MinusCount();
     }
 
+    // Unequipped waste if player leaves the trigger area
+    // Set the waste position to the position during pick up
     public void PutBack()
     {
         Detach();
