@@ -52,15 +52,15 @@ public class Maximise : MonoBehaviour
 
     void Start()
     {
-        startScale = new Vector3(0.5f, 0.5f, 0.5f);
-        startTransform = new Vector3(Screen.width - Screen.width/6, Screen.height - Screen.height/4);
+        startScale = new Vector3(0.3f, 0.3f, 0.3f);
+        startTransform = new Vector3(Screen.width - Screen.width/9.8f, Screen.height - Screen.height/6);
 
         // gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         //gameObject.transform.position = new Vector3(Screen.width - 30f, Screen.height - 30f);
         gameObject.transform.localScale = startScale;
         gameObject.transform.position = startTransform;
 
-        camera.fieldOfView = 8f;
+        camera.fieldOfView = 6f;
     }
 
 
@@ -75,7 +75,7 @@ public class Maximise : MonoBehaviour
                 //gameObject.transform.position = new Vector3(Screen.width - 300f, Screen.height - 300f);
                 gameObject.transform.localScale = startScale;
                 gameObject.transform.position = startTransform;
-                camera.fieldOfView = 8f;
+                camera.fieldOfView = 6f;
 
             }
             else
