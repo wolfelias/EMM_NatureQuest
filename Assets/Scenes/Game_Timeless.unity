@@ -19774,6 +19774,56 @@ PrefabInstance:
       propertyPath: dialogText
       value: 
       objectReference: {fileID: 1394401116}
+    - target: {fileID: 5411188553550093655, guid: 73563bace989f4d868f452a3fc681ef3,
+        type: 3}
+      propertyPath: questions.Array.data[0].answerRight
+      value: Whoa. Level Asian. Your math skills are over 9000!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411188553550093655, guid: 73563bace989f4d868f452a3fc681ef3,
+        type: 3}
+      propertyPath: questions.Array.data[0].answerWrong
+      value: Nah bro, 1+1 = 2. Maybe study some beginner math again?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411188553550093655, guid: 73563bace989f4d868f452a3fc681ef3,
+        type: 3}
+      propertyPath: questions.Array.data[1].answerRight
+      value: Seems you are not colorblind. Well done!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411188553550093655, guid: 73563bace989f4d868f452a3fc681ef3,
+        type: 3}
+      propertyPath: questions.Array.data[1].answerWrong
+      value: Uhm..No? Blue is blue and red is red.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411188553550093655, guid: 73563bace989f4d868f452a3fc681ef3,
+        type: 3}
+      propertyPath: questions.Array.data[2].answerRight
+      value: 'Haha yeah. Susann thinks so too. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411188553550093655, guid: 73563bace989f4d868f452a3fc681ef3,
+        type: 3}
+      propertyPath: questions.Array.data[2].answerWrong
+      value: Aww man. Haven't you noticed my moustache?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411188553550093655, guid: 73563bace989f4d868f452a3fc681ef3,
+        type: 3}
+      propertyPath: questions.Array.data[3].answerRight
+      value: That's right. My name is Lario.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411188553550093655, guid: 73563bace989f4d868f452a3fc681ef3,
+        type: 3}
+      propertyPath: questions.Array.data[3].answerWrong
+      value: No sorry to disappoint you but I am Lario.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411188553550093655, guid: 73563bace989f4d868f452a3fc681ef3,
+        type: 3}
+      propertyPath: questions.Array.data[4].answerRight
+      value: So true.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411188553550093655, guid: 73563bace989f4d868f452a3fc681ef3,
+        type: 3}
+      propertyPath: questions.Array.data[4].answerWrong
+      value: 42 is the answer to all questions how coult that be wrong???
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73563bace989f4d868f452a3fc681ef3, type: 3}
 --- !u!1001 &5743977747199785109
