@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 change;
     private Animator animator;
+    private Vector2 startPosition = new Vector2(-61, -17);
 
     public PlayerState CurrentState { 
         get { return currentState; }
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         currentState = PlayerState.walk;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        transform.position = startPosition;
     }
 
     private void FixedUpdate()
