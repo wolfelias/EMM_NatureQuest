@@ -41,9 +41,9 @@ public class SpawnWaste : MonoBehaviour
 
         // Set the number of spawn limit based on game mode
         if (minigamesManager.isChill)
-            spawnLimit = 100;
+            spawnLimit = 17;
         else
-            spawnLimit = 20;
+            spawnLimit = 12;
         totalSpawned = 0;
 
         // Start the coroutine
