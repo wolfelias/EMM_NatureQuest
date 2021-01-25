@@ -26,7 +26,7 @@ public class HealthbarNotifier : MonoBehaviour
     {
         if (!isGameEnded)
         {
-            if (playerHealth.curHealth == 0)
+            if (playerHealth.curHealth <= 0)
             {
                 Time.timeScale = 0;
                 lostPanel.SetActive(true);
@@ -36,7 +36,7 @@ public class HealthbarNotifier : MonoBehaviour
                 EventSystem.current.SetSelectedGameObject(null);
                 EventSystem.current.SetSelectedGameObject(restartButton);
             }
-            else if (playerHealth.curHealth == 100)
+            else if (playerHealth.curHealth >= 100)
             {
                 Time.timeScale = 0;
                 wonPanel.SetActive(true);
