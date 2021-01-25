@@ -78,6 +78,7 @@ public class WaterpipeScript : MonoBehaviour
         }
     }
 
+    // Rotating the pipe counter-clockwise for each 90 degrees
     private void RotatePipe()
     {
         transform.Rotate(new Vector3(0, 0, 90));

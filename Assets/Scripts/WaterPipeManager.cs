@@ -51,14 +51,14 @@ public class WaterPipeManager : MonoBehaviour
         }
     }
 
-    // If the pipe set is completed, spawn a new pipeset after 15 seconds
+    // If the pipe set is completed, spawn a new pipe set after 15 seconds
+    // in chill gamemode. In survival mode, the pipe set won't be reseted
     private IEnumerator CheckCompleted()
     {
         while (true)
         {
             if (isCompleted && minigamesManager.isChill)
             {
-                Debug.Log(minigamesManager.isChill);
                 selection++;
                 if (selection == PipeSet.Length)
                     selection = 0;
@@ -86,6 +86,8 @@ public class WaterPipeManager : MonoBehaviour
         }
     }
 
+    // If the pipe being rotated has the correct rotation, increase
+    // the number of the corrected pipes
     public void CorrectMove()
     {
         correctedPipes += 1;
@@ -97,11 +99,14 @@ public class WaterPipeManager : MonoBehaviour
         }
     }
 
+    // If the pipe being rotated doesn't have the correct rotation,
+    // decrease the number of the corrected pipes
     public void WrongMove()
     {
         correctedPipes -= 1;
     }
 
+    // Spawn a new pipe set
     private void SpawnPipeSet()
     {
         ResetVariables();

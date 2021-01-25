@@ -52,13 +52,14 @@ public class SpawnWaste : MonoBehaviour
 
     void Update()
     {
+        // Check every frame if player leaving the trigger area
         if (Physics2D.OverlapCircle(player.transform.position, 0.2f, triggerLayer) == null)
             {
                 DropWaste();
             }
     }
 
-    // Spawn waste for each 30 seconds
+    // Spawn waste for each a couple of seconds
     private IEnumerator Spawn()
     {
         while(totalSpawned < spawnLimit)
@@ -158,6 +159,7 @@ public class SpawnWaste : MonoBehaviour
         }
     }
 
+    // Put back the equipped waste when player leaving the trigger area
     private void DropWaste()
     {
         if (wasteList != null)
@@ -169,7 +171,7 @@ public class SpawnWaste : MonoBehaviour
                     wasteScript = wasteList[i].gameObject.GetComponent<WasteScript>();
                     if(wasteScript.equipped)
                     {
-                        wasteScript.Detach();
+                        wasteScript.PutBack();
                     }
                 }
             }
