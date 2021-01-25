@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
             points.transform.SetParent(healthBar.transform);
             points.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "+ " + hp;
             points.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.green;
-
+            
             curHealth += hp;
             healthBar.SetHealth(curHealth);
         }
