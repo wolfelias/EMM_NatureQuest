@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseFirstButton;
     private static TimerController timerController;
     private static HealthbarNotifier healthbarNotifier;
+    private bool allowPauseMenu = true;
 
     private void Start()
     {
@@ -32,12 +33,11 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        bool temp = true;
         if (SceneManager.GetActiveScene().name.Equals("Game_Survival"))
         {
-            temp = timerController.isOver;
+            allowPauseMenu = !timerController.isOver;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && !temp && !healthbarNotifier.isOver)
+        if (Input.GetKeyDown(KeyCode.Escape) && allowPauseMenu && !healthbarNotifier.isOver)
         {
             if (IsPaused)
             {
