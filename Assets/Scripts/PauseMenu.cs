@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
+    /**
+    *   handles Pause Menu
+    */
 public class PauseMenu : MonoBehaviour
 {
     public static bool IsPaused = false;
@@ -14,6 +17,11 @@ public class PauseMenu : MonoBehaviour
     private static HealthbarNotifier healthbarNotifier;
     private bool allowPauseMenu = true;
 
+    /**
+    *   set TimeScale to 1
+    *   initialize PauseMenu and set Timer if SurvivalMode is played
+    *   get reference to the health bar
+    */
     private void Start()
     {
         Time.timeScale = 1;
@@ -31,6 +39,10 @@ public class PauseMenu : MonoBehaviour
         Debug.Log(healthbarNotifier.isOver);
     }
 
+    /**
+    *   pauses the menu on pressing ESC 
+    *   in survival mode just possible as long timer > 0 
+    */
     private void Update()
     {
         if (SceneManager.GetActiveScene().name.Equals("Game_Survival"))
@@ -50,6 +62,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    /**
+    *   pause the game; timeScale set to 0 
+    */
     public void Pause()
     {
         pauseMenu.SetActive(true);
@@ -59,6 +74,9 @@ public class PauseMenu : MonoBehaviour
         IsPaused = true;
     }
 
+    /**
+    *   resume game; timeScale set to 1
+    */
     public void Resume()
     {
         pauseMenu.SetActive(false);
@@ -66,12 +84,18 @@ public class PauseMenu : MonoBehaviour
         IsPaused = false;
     }
 
+    /**
+    *   get back to startMenu 
+    */
     public void LoadStartMenu()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("StartMenu");
     }
 
+    /**
+    *   restart current GameMode
+    */
     public void Restart()
     {
         Time.timeScale = 1;

@@ -3,12 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/**
+*   Two PlayerStates:
+*   walk: while walking
+*   interact: while interacting with sth
+*/
 public enum PlayerState
 {
     walk,
     interact
 }
 
+    /**
+    *   Movement Script for the player
+    */
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerState currentState;
@@ -24,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
         set { currentState = value; }
     }
 
+    /**
+    *   set Startposition of the player and get his animator and rigidbody, sets currentState to walk
+    */
     private void Start()
     {
         currentState = PlayerState.walk;
@@ -32,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
         transform.position = startPosition;
     }
 
+    /**
+    *   x and y values of the change - Vector3 are set to the player input values and calls the UpdateAnimation when playerState = walk
+    */
     private void FixedUpdate()
     {
         change = Vector3.zero;
@@ -43,6 +58,10 @@ public class PlayerMovement : MonoBehaviour
         }       
     }
 
+    /**
+    *   calls MoveCharacter
+    *   sets animator parameters for animation  
+    */
     void UpdateAnimation()
     {
         if (change != Vector3.zero)
@@ -58,6 +77,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /**
+    *   calls change.Normalize so diagonal movement won't be faster than non-diagonal movements
+    *   sets position of player to new position  
+    */
     void MoveCharacter()
     {
         // Normalize 'change' to make diagonal movement slower

@@ -4,6 +4,10 @@ using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/**
+*   manages the minigame-signs in game
+*/
 public class SignManager : MonoBehaviour
 {
     public Signal signal;
@@ -17,6 +21,10 @@ public class SignManager : MonoBehaviour
     private float timePerCharacter;
     private int characterIndex;
 
+
+    /**
+    *   deactivate dialog box
+    */
     private void Start()
     {
         dialogBox.SetActive(false);
@@ -24,6 +32,9 @@ public class SignManager : MonoBehaviour
         // animator.SetBool("IsOpen", true);
     }
 
+    /**
+    *   activate and show the sign when player near it and presses E
+    */
     void Update()
     {
         
@@ -55,6 +66,9 @@ public class SignManager : MonoBehaviour
         }
     }
 
+    /**
+    *   when player near the sign activate the Indicator on top of player
+    */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -64,6 +78,9 @@ public class SignManager : MonoBehaviour
         }
     }
 
+    /**
+    *   when player leaves the trigger then deactivate the Indicator on top of player and close dialog box  
+    */
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -82,12 +99,18 @@ public class SignManager : MonoBehaviour
         }
     }
 
+    /**
+    *   wait for dialog box to close (animation) before deactivating it
+    */
     IEnumerator WaitForDialogBox()
     {
         yield return new WaitForSeconds(0.4f);
         dialogBox.SetActive(false);
     }
 
+    /**
+    *   deprecated
+    */
     public void AddWriter(Text uiText, string textToWrite, float timePerCharacter)
     {
         this.uiText = uiText;
