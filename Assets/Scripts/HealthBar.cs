@@ -4,13 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/*! @file HealthBar.cs
+ *
+ *  @brief A script used for the health bar
+ *
+ *  @author Sunan Regi Maunakea
+ *
+ *  A health bar shows the current health the player has. It is located
+ *  at the bottom center of the screen. The current health points is
+ *  showed next to the health bar.
+ */
 public class HealthBar : MonoBehaviour
 {
     public Slider healthBar;
     public Health playerHealth;
     public TextMeshProUGUI mText;
 
-    // Start is called before the first frame update
+    /*! @brief Start method of the script
+     *  
+     *  Get the player health component
+     */
     private void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
@@ -21,6 +34,9 @@ public class HealthBar : MonoBehaviour
         mText.SetText(healthBar.value +" / "+ playerHealth.maxHealth);
     }
 
+    /*!
+     *  Set the player health to the given parameter
+     */
     public void SetHealth(int hp)
     {
         healthBar.value = hp;
@@ -29,6 +45,4 @@ public class HealthBar : MonoBehaviour
         mText.SetText(hp +" / "+ playerHealth.maxHealth);
             
     }
-
-  
 }

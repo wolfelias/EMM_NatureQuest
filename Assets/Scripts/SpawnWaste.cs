@@ -2,6 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*! @file SpawnWaste.cs
+ *
+ *  @brief A script used for waste sorting minigame
+ *
+ *  @author Sunan Regi Maunakea
+ *
+ *  Waste sorting minigame is one of the minigames in Nature Quest, where
+ *  player must sort the waste to its corresponding waste bin. If the waste
+ *  falls to the correct waste bin, health increases by 2 points. Otherwise,
+ *  health decreases. There are 5 different types of waste which are recyclable
+ *  waste, paper waste, organic waste, household waste, and glass waste. In
+ *  chill mode, there will be in total 17 waste to be spawned making it 34 points
+ *  in total if player is able to correctly dispose all of the waste. Meanwhile,
+ *  in survival mode there will only be 12 waste to be spawned. The waste will
+ *  be spawned at random positions inside the trigger area.
+ */
 public class SpawnWaste : MonoBehaviour
 {
     public Transform laundrySoapBottle, milkJug, plasticBottle, polystyreneFoamCup, pressurizedSprayCan, sodaCan, steelCan, tunaCan;
@@ -23,57 +39,56 @@ public class SpawnWaste : MonoBehaviour
     public MinigamesManager minigamesManager;
     private int spawnLimit, totalSpawned;
 
-    // Start is called before the first frame update
+    /*! @brief Start method of the script
+     *  
+     *  Count the number of objects created. Set the amount how many prefabs
+     *  should be instantiated. Set a random position for the first waste to
+     *  spawn. Set the number of spawn limit based on game mode.
+     */
     void Start()
     {
-        // Count the number of objects created
         count = 0;
-
-        // The amount how many objects should be created
         amount = 10;
-
-        // Initiate List
         wasteList = new List<Transform>();
-
-        // Set a random spawn position
         spawnPosX = Random.Range(28.0f, 60.0f);
         spawnPosY = Random.Range(-8.0f, -44.0f);
 
-        // Set the number of spawn limit based on game mode
         if (minigamesManager.isChill)
             spawnLimit = 17;
         else
             spawnLimit = 12;
         totalSpawned = 0;
 
-        // Start the coroutine
         StartCoroutine(Spawn());
     }
 
+    /*! @brief Update method of the script
+     *  
+     *  Check every frame if player is leaving the trigger area
+     */
     void Update()
     {
-        // Check every frame if player leaving the trigger area
         if (Physics2D.OverlapCircle(player.transform.position, 0.2f, triggerLayer) == null)
             {
                 DropWaste();
             }
     }
 
-    // Spawn waste for each a couple of seconds
+    /*!
+     *  IEnumerator for spawning waste for each a couple of seconds. Update random spawn positon.
+     *  Instantiate copies of random Prefab and add to list.
+     */
     private IEnumerator Spawn()
     {
         while(totalSpawned < spawnLimit)
         {
-            // Update random spawn position
             spawnPosX = Random.Range(28.0f, 60.0f);
             spawnPosY = Random.Range(-8.0f, -44.0f);
             if (count != amount)
             {
-                // Set the vector 2 position
                 Vector2 spawnPos = new Vector2(spawnPosX, spawnPosY);
                 whatToSpawn = Random.Range(1, 26);
 
-                // Instantiate copies of random Prefab and add to list
                 switch (whatToSpawn)
                 {
                     case 1:
@@ -159,7 +174,9 @@ public class SpawnWaste : MonoBehaviour
         }
     }
 
-    // Put back the equipped waste when player leaving the trigger area
+    /*!
+     *  Put back the equipped waste when player leaves the trigger area
+     */
     private void DropWaste()
     {
         if (wasteList != null)
@@ -178,6 +195,9 @@ public class SpawnWaste : MonoBehaviour
         }
     }
 
+    /*!
+     *  Decrease the amount of spawned waste
+     */
     public void MinusCount()
     {
         count -= 1;

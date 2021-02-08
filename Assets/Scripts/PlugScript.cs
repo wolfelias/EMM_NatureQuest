@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*! @file PlugScript.cs
+ *
+ *  @brief A script used for plug prefab
+ *
+ *  @author Sunan Regi Maunakea
+ *
+ *  A plug prefab has a rigidbody 2D component. Player can
+ *  pick up and drop a plug inside a lantern area. A plug
+ *  is one of the important component in the electro minigame.
+ *  It is connected to a lantern using a cable (line).
+ */
 public class PlugScript : MonoBehaviour
 {
     public bool equipped;
@@ -20,7 +31,11 @@ public class PlugScript : MonoBehaviour
     private Vector3 tempPosition;
     private LanternManager lanternManager;
 
-    // Start is called before the first frame update
+    /*! @brief Start method of the script
+     *  
+     *  Get the necessary component for the plug. Set isPlugged to true and
+     *  isReplugged to false.
+     */
     void Start()
     {
         lanternManager = GameObject.Find("LanternManager").GetComponent<LanternManager>();
@@ -30,7 +45,11 @@ public class PlugScript : MonoBehaviour
         isReplugged = false;
     }
 
-    // Update is called once per frame
+    /*! @brief Update method of the script
+     *  
+     *  Check every frame if player is trying to pick up or drop a plug
+     *  before the game is completed
+     */
     void Update()
     {
         if (!lanternManager.isCompleted)
@@ -41,7 +60,7 @@ public class PlugScript : MonoBehaviour
                 Drop();
         }
     }
-
+    
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -80,6 +99,12 @@ public class PlugScript : MonoBehaviour
         }
     }
 
+    /*! 
+     *  Pick up the nearest plug by setting the plug parent to the container.
+     *  Set equipped and slotFull to true, so player can't pick up another plug.
+     *  Make plug a child of the container and move it to default position with
+     *  a slight change on the Y-axis.
+     */
     private void PickUp()
     {
         tempPosition = transform.localPosition;
@@ -91,6 +116,11 @@ public class PlugScript : MonoBehaviour
         isPlugged = false;
     }
 
+    /*!
+     *  Drop the equipped plug when "Q" is pressed by setting the plug parent to
+     *  its original parent. If the drop range is near an outlet, then set the
+     *  position of the dropped to the position of the outlet.
+     */
     private void Drop()
     {
         Detach();
@@ -113,12 +143,20 @@ public class PlugScript : MonoBehaviour
         }
     }
 
+    /*!
+     *  Unequip plug if player leaves the lantern area.
+     *  Set the plug position to the position during pick up.
+     */
     private void PutBack()
     {
         Detach();
         transform.localPosition = tempPosition;
     }
 
+    /*!
+     *  Detach the plug from the container and set the parent to its
+     *  original parent.
+     */
     private void Detach()
     {
         equipped = false;
