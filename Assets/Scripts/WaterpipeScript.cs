@@ -2,10 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*! @file WaterpipeScript.cs
+ *
+ *  @brief A script used for controlling the water pipes
+ *
+ *  @author Sunan Regi Maunakea
+ *
+ *  Each water pipe has 4 degrees of rotation which are 0, 90, 180, and 270.
+ *  In each puzzle, each water pipe has its own correct rotation. At first,
+ *  the water pipes will be rotated to a random rotation. Player can only
+ *  rotate the pipes while inside the collider of the water pipe which the
+ *  player intends to rotate.
+ */
+
 public class WaterpipeScript : MonoBehaviour
 {
     private float[] rotations = { 0, 90, 180, 270 };
-
     public float[] correctRotation;
     [SerializeField]
     private bool isPlaced = false;
@@ -14,23 +26,25 @@ public class WaterpipeScript : MonoBehaviour
 
     private bool rotateAllowed;
 
+    /*! 
+     *  Retrieve the water pipe manager component before Start() method
+     */
     private void Awake()
     {
-        // Get the water pipe manager component
         wpManager = GameObject.Find("WaterPipeManager").GetComponent<WaterPipeManager>();
     }
 
-    // Start is called before the first frame update
+    /*! @brief Start method of the script
+     *  
+     *  Check the possible rotation of a pipe by getting the length of the correct rotation.
+     *  Set the random rotation for each pipe.
+     */
     void Start()
     {
-        // Check the possible rotation of a pipe by getting the length of the correct rotation
         possibleRots = correctRotation.Length;
-
-        // A random int to set the random rotation
         int rand = Random.Range(0, rotations.Length);
         transform.eulerAngles = new Vector3(0, 0, rotations[rand]);
 
-        // If possible rotation bigger than 1 (for lines)
         if (possibleRots > 1)
         {
             if (transform.eulerAngles.z == correctRotation[0] || transform.eulerAngles.z == correctRotation[1])
@@ -49,12 +63,15 @@ public class WaterpipeScript : MonoBehaviour
         }
     }
 
+    /*! @brief Update method of the script
+     *  
+     *  Player can rotate the pipes when behind the pipe and key 'E' is pressed.
+     *  If the pipe set is not yet completed then player can rotate.
+     */
     void Update()
     {
-        // Player can rotate the pipes when behind the pipe and key 'E' is pressed
         if (rotateAllowed && Input.GetKeyDown(KeyCode.E))
         {
-            // If the pipe set is not yet completed then player can rotate
             if (!wpManager.isCompleted)
             {
                 RotatePipe();
@@ -78,7 +95,9 @@ public class WaterpipeScript : MonoBehaviour
         }
     }
 
-    // Rotating the pipe counter-clockwise for each 90 degrees
+    /*!
+     *  Rotate the pipe counter-clockwise for each 90 degrees
+     */
     private void RotatePipe()
     {
         transform.Rotate(new Vector3(0, 0, 90));
