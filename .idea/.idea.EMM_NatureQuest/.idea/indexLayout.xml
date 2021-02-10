@@ -27,7 +27,10 @@
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Temp</Path>
+      <Path>html</Path>
+      <Path>man</Path>
       <Path>obj</Path>
+      <Path>rtf</Path>
     </explicitExcludes>
   </component>
 </project>
