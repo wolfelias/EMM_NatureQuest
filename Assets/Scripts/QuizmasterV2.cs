@@ -16,9 +16,17 @@ public class QuizmasterV2 : MonoBehaviour
     private bool playerInRange;
     private string openingText;
 
-    // questions must be >= questionsToAnswer!!!
+    
+    /**
+    *   Array of Questions the quizmaster could ask the player
+    *   questions must be >= questionsToAnswer!!!
+    */
     public Question[] questions;
     private static List<Question> unansweredQuestions;
+    
+    /**
+    *  the number of questions that must be answered 
+    */
     public int questionsToAnswer = 3;
 
     private Question currentQuestion;
@@ -29,6 +37,9 @@ public class QuizmasterV2 : MonoBehaviour
 
     private int rewardHealthPoints = 5;
 
+    /**
+    *   initialize first text and question and deactivate dialogbox for now
+    */
     private void Start()
     {
         openingText = "Hello Adventurer! I am the Quizmaster. \n I will ask you "+ questionsToAnswer + " Questions. Alright. Are you ready?";
@@ -44,6 +55,14 @@ public class QuizmasterV2 : MonoBehaviour
         GetRandomQuestion();
     }
 
+    /**
+    *   check if player is close and pressed E
+    *   countPressE remembers the times E was pressed so quizmaster can act accordingly
+    *   First E: start dialog
+    *   2nd E: start questioning the player until all questions answered
+    *   last E: finishing text
+    *   also start methods for checking player answer T & F
+    */
     void Update()
     {
         // activates the 2nd time the player talks to the Quizmaster --> starts the game
@@ -110,6 +129,10 @@ public class QuizmasterV2 : MonoBehaviour
         }
     }
 
+    /**
+    *   activate Indicator on top of player when near the quizmaster
+    *   @param collision Collider2D of objects entering; needs to be tag = player to do sth
+    */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -119,6 +142,12 @@ public class QuizmasterV2 : MonoBehaviour
         }
     }
 
+    /**
+    *   deactivate Indicator on top of player
+    *   if player leaves and he didn't finish all questions then reset the quizmaster
+    *   close dialog box
+    *   @param collision if Collider2D leaves and is tag = player then call this function
+    */
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -157,6 +186,9 @@ public class QuizmasterV2 : MonoBehaviour
         }
     }
 
+    /**
+    *   picks a random question of the Question-Array pool and sets it to currentQuestion
+    */
     void GetRandomQuestion()
     {
         int randomQuestionIndex = Random.Range(0, unansweredQuestions.Count);
@@ -223,6 +255,13 @@ public class QuizmasterV2 : MonoBehaviour
     }
     */
 
+    /**
+    *   controls the answer of the player
+    *   if answered right get health else lose health
+    *   type answer of quizmaster into the dialogbox 
+    *   set new currentQuestion
+    *   @params k the keycode F = false ; T = true
+    */
     private void checkPlayerAnswer(KeyCode k)
     {
         answeredQuestions++;
@@ -248,6 +287,9 @@ public class QuizmasterV2 : MonoBehaviour
         }
     }
 
+    /**
+    *   Animation-Effect of typing the text into the dialog box  
+    */
     IEnumerator TypeText(string text)
     {
         dialogText.text = "";
@@ -258,6 +300,9 @@ public class QuizmasterV2 : MonoBehaviour
         }
     }
 
+    /**
+    *   waits for dialogBox - Animation to finish before deactivating dialogBox
+    */
     IEnumerator WaitForDialogBox()
     {
         yield return new WaitForSeconds(0.4f);

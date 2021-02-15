@@ -17,7 +17,11 @@ public class CheatBush : MonoBehaviour
     private string openingText = "Hello Adventurer! My name is Mr. Bush!";
     private bool wantsToCheat = false;
 
-    // questions must be >= questionsToAnswer!!!
+    /**
+    *   Array of all texts the CheatBush is holding
+    *   questions must be >= questionsToAnswer
+    */
+    
     public Question[] questions;
     private static List<Question> unansweredQuestions;
     private int questionsToAnswer = 1;
@@ -28,6 +32,10 @@ public class CheatBush : MonoBehaviour
     private bool gameFinished = false;
     private bool isInGame = false;
 
+
+    /**
+    *   initializes CheatBush GameObject
+    */
     private void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
@@ -42,6 +50,10 @@ public class CheatBush : MonoBehaviour
         GetRandomQuestion();
     }
 
+    /**
+    *   checks if player is in trigger zone of the cheat bush and counts the times E was pressed
+    *   depending on the countPressE and isInGame Variable it will react different to the user input
+    */
     void Update()
     {
         // activates the 2nd time the player talks to the Quizmaster --> starts the game
@@ -105,6 +117,10 @@ public class CheatBush : MonoBehaviour
         }
     }
 
+    
+    /**
+    * on player entering the trigger it raises the signal above players head and sets playerInRange = true  
+    */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -114,6 +130,10 @@ public class CheatBush : MonoBehaviour
         }
     }
 
+    /**
+    *   when player leaves the field and wants to cheat set his health to 100 so he wins automatically
+    *   else set playerInRange to false deactivate the signal above players head and close dialog
+    */
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -137,6 +157,10 @@ public class CheatBush : MonoBehaviour
         }
     }
 
+    /**
+    *   set a random text from the questions Array as the current text
+    *   it just has one text to show so it just choses that one text every time
+    */
     void GetRandomQuestion()
     {
         int randomQuestionIndex = Random.Range(0, unansweredQuestions.Count);
@@ -145,6 +169,9 @@ public class CheatBush : MonoBehaviour
         unansweredQuestions.RemoveAt(randomQuestionIndex);
     }
 
+    /**
+    * controls the answer of the player and sets wantsToCheat to either true or false  
+    */
     private void checkPlayerAnswer(KeyCode k)
     {
         answeredQuestions++;
@@ -172,6 +199,9 @@ public class CheatBush : MonoBehaviour
         }
     }
 
+    /**
+    *   creates an animation effect of all the letters in a text
+    */
     IEnumerator TypeText(string text)
     {
         dialogText.text = "";
@@ -182,6 +212,9 @@ public class CheatBush : MonoBehaviour
         }
     }
 
+    /**
+    * Wait for the dialogbox to disappear  
+    */
     IEnumerator WaitForDialogBox()
     {
         yield return new WaitForSeconds(0.4f);

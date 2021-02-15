@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+    /**
+    *   simple Lerp on Camera following the player
+    */
 public class CameraScript : MonoBehaviour
 {
     public GameObject player;
@@ -10,9 +13,9 @@ public class CameraScript : MonoBehaviour
     public float speed;
     public float distance;
 
-
-
-    // Update is called once per frame
+    /**
+    *   Lerping cam position to player position (gives small follow effect)
+    */
     void Update()
     {
         Vector3 offsetVector = new Vector3(0.0f, 0.0f, -distance);

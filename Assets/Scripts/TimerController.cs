@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+    /**
+    *   manages timer in survival mode
+    */
 public class TimerController : MonoBehaviour
 {
     public static TimerController Instance;
@@ -38,7 +41,9 @@ public class TimerController : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
+    /**
+    *   initialize timer and start it
+    */
     void Start()
     {
         maxTime = TimeSpan.FromMinutes(time);
@@ -46,6 +51,10 @@ public class TimerController : MonoBehaviour
         BeginTimer();
     }
 
+    /**
+    *   begins the timer; timerGoing = true
+    *   start coroutine to update timer  
+    */
     public void BeginTimer()
     {
         timerGoing = true;
@@ -54,12 +63,19 @@ public class TimerController : MonoBehaviour
         StartCoroutine(UpdateTimer());
     }
 
+    /**
+    *   sets timerGoing = false when timer runs out  
+    */
     void EndTimer()
     {
         timerGoing = false;
     }
 
 
+    /**
+    *   calls down the time
+    *   when elapsedTime = maxTime activate LostMenu
+    */
     private IEnumerator UpdateTimer()
     {
         while (timerGoing)

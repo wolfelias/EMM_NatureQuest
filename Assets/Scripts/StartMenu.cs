@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+
+    /**
+    *   handles StartMenu
+    */
 public class StartMenu : MonoBehaviour
 {
     public MinigamesManager minigamesManager;
@@ -15,12 +19,18 @@ public class StartMenu : MonoBehaviour
     public GameObject chillText;
     public GameObject menuFirstButton, modeFirstButton, aboutFirstButton, aboutClosedButton; 
 
+    /**
+    *   initialize start menu; deactivate all Buttons that aren't needed ad beginning
+    */
     private void Start()
     {
         survivalText.gameObject.SetActive(false);
         chillText.gameObject.SetActive(false);
     }
 
+    /**
+    *   show descriptions of Survival- / Chill- Mode when player hovers over corresponding button
+    */
     private void Update()
     {
         if (EventSystem.current.currentSelectedGameObject == survivalButton.gameObject)
@@ -40,6 +50,9 @@ public class StartMenu : MonoBehaviour
         }
     }
 
+    /**
+    *   open the Mode-Selecting-Menu
+    */
     public void OpenChooseMode()
     {
         // Clear selected object
@@ -48,54 +61,84 @@ public class StartMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(modeFirstButton);
     }
 
+    /**
+    *   get back to main screen
+    */
     public void CloseChooseMode()
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(menuFirstButton);
     }
 
+    /**
+    *   open about text
+    */
     public void OpenAbout()
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(aboutFirstButton);
     }
 
+    /**
+    *   close the about text
+    */
     public void CloseAbout()
     {
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(aboutClosedButton);
     }
 
+    /**
+    *   display info text from survival-mode-button  
+    */
     public void ShowSurvivalInfo()
     {
         survivalText.SetActive(true);
     }
 
+    /**
+    *   closes info text from survival-mode-button  
+    */
     public void ExitSurvivalInfo()
     {
         survivalText.SetActive(false);
     }
 
+    /**
+    *   display info text from chill-mode-button
+    */
     public void ShowChillInfo()
     {
         chillText.SetActive(true);
     }
 
+    /**
+    *   closes info text from chill-mode-button
+    */
     public void ExitChillInfo()
     {
         chillText.SetActive(false);
     }
 
+    /**
+    *   loads chill mode
+    */
     public void PlayTimeless()
     {
         SceneManager.LoadScene("Game_Timeless");
         minigamesManager.isChill = true;
     }
+    /**
+    *   loads survival mode
+    */
     public void PlaySurvival()
     {
         SceneManager.LoadScene("Game_Survival");
         minigamesManager.isChill = false;
     }
+    /**
+    *   close whole application
+    */
     public void QuitGame()
     {
         Application.Quit(); 

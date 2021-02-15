@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/**
+* DEPRECATED  
+*/
 public class PlayerMovementMuell : MonoBehaviour
 {
     [SerializeField]

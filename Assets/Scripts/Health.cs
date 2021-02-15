@@ -4,6 +4,16 @@ using UnityEngine;
 using TMPro;
 using System;
 
+/*! @file Health.cs
+ *
+ *  @brief A script used for player's health
+ *
+ *  @author Sunan Regi Maunakea
+ *
+ *  A player has a maximum health of 100 and a minimum of 0.
+ *  If health reaches the maximum health, then player won.
+ *  If health reaches the minimum health, then player lost.
+ */
 public class Health : MonoBehaviour
 {
     public int curHealth = 0;
@@ -13,12 +23,18 @@ public class Health : MonoBehaviour
     public HealthBar healthBar;
     public GameObject floatingPoints;
 
-    // Start is called before the first frame update
+    /*! @brief Start method of the script
+     *  
+     *  Set the current health to 50
+     */
     void Start()
     {
         curHealth = maxHealth / 2;
     }
 
+    /*!
+     *  Decrease the player health for the given amount of damage
+     */
     public void DecreaseHealth(int damage)
     {
         if (curHealth > minHealth)
@@ -33,6 +49,9 @@ public class Health : MonoBehaviour
         }
     }
 
+    /*!
+     *  Increase the player health for the given amount of HP
+     */
     public void IncreaseHealth(int hp)
     {
         if (curHealth < maxHealth)

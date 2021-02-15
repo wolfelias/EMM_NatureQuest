@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+*   DEPRECATED
+*/
 public class Sign : MonoBehaviour
 {
     public Signal signal;
@@ -12,13 +15,18 @@ public class Sign : MonoBehaviour
     public string signText;
     private bool playerInRange;
 
-
+    /**
+    *   deactivate dialogbox and animator at the start
+    */
     void Start()
     {
         dialogBox.SetActive(false);
         animator.SetBool("IsOpen", false);
     }
 
+    /**
+    *   activate dialogbox and animator when player in range and presses E
+    */
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && playerInRange)
@@ -47,6 +55,9 @@ public class Sign : MonoBehaviour
         }
     }
 
+    /**
+    *   activate checkmark above players head and set playerInRange = true  
+    */
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -56,6 +67,10 @@ public class Sign : MonoBehaviour
         }
     }
 
+    /**
+    *   deactivate checkmark above player and set playerInRange = false
+    *   deactivte dialogbox and animator  
+    */
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -74,6 +89,10 @@ public class Sign : MonoBehaviour
             StartCoroutine(WaitForDialogBox());
         }
     }
+
+    /**
+    *   creates Animation Effect of typing text
+    */
     IEnumerator TypeText(string text)
     {
         dialogText.text = "";
@@ -83,6 +102,10 @@ public class Sign : MonoBehaviour
             yield return null;
         }
     }
+
+    /**
+    *   waits for dialogbox to close (in screen) before going on with deactivating it
+    */
     IEnumerator WaitForDialogBox()
     {
         yield return new WaitForSeconds(0.4f);

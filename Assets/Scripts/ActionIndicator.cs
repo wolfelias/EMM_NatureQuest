@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class ActionIndicator : MonoBehaviour
 {
+    
+    /**
+    *   Signal Speech Bubble on top of player head
+    */
     public GameObject actionIndicator;
     private bool isActive = false;
     
+    /**
+    *   set the Speech Bubble to active or not active
+    */
     public void ChangeIndicator()
     {
         isActive = !isActive;

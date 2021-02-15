@@ -2,6 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*! @file WaterPipeManager.cs
+ *
+ *  @brief A script used for water pipe minigame
+ *
+ *  @author Sunan Regi Maunakea
+ *
+ *  Water pipe minigame is one of the minigames in Nature Quest, where
+ *  player must complete the water pipe puzzle before running out of
+ *  health. When the player is in the minigame area, the health will
+ *  decrease slowly. There are in total 4 different sets of water pipe
+ *  puzzle and will be randomly selected at the start of the game. In
+ *  chill mode, the puzzle will be reset 15 seconds after copmletion.
+ *  Meanwhile in survival mode, puzzle will not be reset.
+ */
 [RequireComponent(typeof(AudioSource))]
 public class WaterPipeManager : MonoBehaviour
 {
@@ -25,22 +39,25 @@ public class WaterPipeManager : MonoBehaviour
 
     AudioSource audio;
 
-    // Start is called before the first frame update
+    /*! @brief Start method of the script
+     *  
+     *  Retrieve the AudioSource component and player health. Spawn the pipe set prefab
+     */
     void Start()
     {
         audio = GetComponent<AudioSource>();
-        // Get the health of the player
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         selection = Random.Range(0, 4);
 
-        // Spawn the pipe set prefab
         SpawnPipeSet();
 
         StartCoroutine(WaterAreaDamage());
         StartCoroutine(CheckCompleted());
     }
 
-    // If Player enters the water minigame, the health bar decreases slowly
+    /*!
+     *  IEnumerator to check whether player is in the water minigame area
+     */
     private IEnumerator WaterAreaDamage()
     {
         while (true)
@@ -55,8 +72,9 @@ public class WaterPipeManager : MonoBehaviour
         }
     }
 
-    // If the pipe set is completed, spawn a new pipe set after 15 seconds
-    // in chill gamemode. In survival mode, the pipe set won't be reseted
+    /*!
+     *  IEnumerator to check whether the minigame is completed
+     */
     private IEnumerator CheckCompleted()
     {
         while (true)
@@ -90,8 +108,10 @@ public class WaterPipeManager : MonoBehaviour
         }
     }
 
-    // If the pipe being rotated has the correct rotation, increase
-    // the number of the corrected pipes
+    /*!
+     *  If the pipe being rotated has the correct rotation, increase
+     *  the number of the corrected pipes
+     */
     public void CorrectMove()
     {
         correctedPipes += 1;
@@ -103,14 +123,18 @@ public class WaterPipeManager : MonoBehaviour
         }
     }
 
-    // If the pipe being rotated doesn't have the correct rotation,
-    // decrease the number of the corrected pipes
+    /*!
+     *  If the pipe being rotated doesn't have the correct rotation,
+     *  decrease the number of the corrected pipes
+     */
     public void WrongMove()
     {
         correctedPipes -= 1;
     }
 
-    // Spawn a new pipe set
+    /*!
+     *  Spawn a new pipe set
+     */
     private void SpawnPipeSet()
     {
         ResetVariables();
@@ -126,6 +150,9 @@ public class WaterPipeManager : MonoBehaviour
         }
     }
 
+    /*!
+     *  Reset the variables
+     */
     private void ResetVariables()
     {
         correctedPipes = 0;

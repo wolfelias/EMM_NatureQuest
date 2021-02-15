@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/**
+*   DEPRECATED
+*/
 public class Quizmaster : MonoBehaviour
 {
     public Signal signal;
